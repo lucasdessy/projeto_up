@@ -28,6 +28,7 @@ class SplashPageView extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
+                margin: EdgeInsets.only(bottom: 95),
                 child: Text(
                   "Seja bem-vindo!",
                   style: UpText.BoldWhite,
