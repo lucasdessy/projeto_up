@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:projeto_up/models/startup.dart';
+import 'package:projeto_up/services/startup_service.dart';
 
 class HomePageBindings implements Bindings {
   @override
@@ -7,4 +9,16 @@ class HomePageBindings implements Bindings {
   }
 }
 
-class HomePageController extends GetxController {}
+class HomePageController extends GetxController {
+  final StartupService startupService = Get.find();
+
+  RxBool get loading {
+    return startupService.loading;
+  }
+
+  Map<String, List<Startup>> get startups {
+    return startupService.startups;
+  }
+
+  void handleReload() {}
+}

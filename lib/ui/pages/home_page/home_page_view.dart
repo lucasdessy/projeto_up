@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/ui/components/up_header.dart';
@@ -15,7 +16,14 @@ class HomePageView extends GetView<HomePageController> {
         slivers: [
           UpHeader(),
           HomePageGreetings(),
-          HomePageListing(),
+          CupertinoSliverRefreshControl(),
+          controller.loading()
+              ? SliverToBoxAdapter(
+                  child: CupertinoActivityIndicator(),
+                )
+              : HomePageListing(
+                  startups: controller.startups,
+                ),
         ],
       ),
     );
