@@ -21,7 +21,7 @@ class AppService extends GetxService {
     await Future.delayed(
       Duration(seconds: UpConfig.SPLASH_TIME),
     );
-    Get.toNamed(RouterService.HOME);
+    Get.offAllNamed(RouterService.HOME);
     super.onReady();
   }
 }
