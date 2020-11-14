@@ -7,7 +7,7 @@ class Membro {
     this.cargo,
   });
 
-  factory Membro.fromDocument(Map<String, dynamic> snapshot) {
+  factory Membro.fromDocument(Map<dynamic, dynamic> snapshot) {
     return Membro(
       nomeMembro: snapshot["nome_membro"],
       cargo: snapshot["cargo"],

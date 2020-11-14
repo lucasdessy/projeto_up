@@ -38,22 +38,32 @@ class Startup {
   });
 
   factory Startup.fromDocument(DocumentSnapshot snapshot) {
-    return Startup(
-      id: snapshot.id,
-      nome: snapshot.data()["nome"],
-      capaUrl: snapshot.data()["capa_url"],
-      segmento: snapshot.data()["segmento"],
-      descricao: snapshot.data()["descricao"],
-      pitchUrl: snapshot.data()["pitch_url"],
-      whatsapp: snapshot.data()["whatsapp"],
-      instagram: snapshot.data()["instagram"],
-      facebook: snapshot.data()["facebook"],
-      outrosContatos: (snapshot.data()["outros_contatos"] as List<String>),
-      membros: (snapshot.data()["membros"] as List<Map>).map(
-        (membroSnap) => Membro.fromDocument(membroSnap),
-      ),
-      album: (snapshot.data()["album"] as List<String>),
-    );
+    try {
+      return Startup(
+        id: snapshot.id,
+        nome: snapshot.data()["nome"],
+        capaUrl: snapshot.data()["capa_url"],
+        segmento: snapshot.data()["segmento"],
+        descricao: snapshot.data()["descricao"],
+        pitchUrl: snapshot.data()["pitch_url"],
+        whatsapp: snapshot.data()["whatsapp"],
+        instagram: snapshot.data()["instagram"],
+        facebook: snapshot.data()["facebook"],
+        outrosContatos: (snapshot.data()["outros_contatos"] as List<dynamic>)
+            .map((e) => e.toString())
+            .toList(),
+        membros: (snapshot.data()["membros"] as List<dynamic>)
+            .map(
+              (membroSnap) => Membro.fromDocument(membroSnap),
+            )
+            .toList(),
+        album: (snapshot.data()["album"] as List<dynamic>)
+            .map((e) => e.toString())
+            .toList(),
+      );
+    } catch (e) {
+      return Startup();
+    }
   }
 
   Map<String, dynamic> toJson() => {
