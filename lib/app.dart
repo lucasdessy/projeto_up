@@ -6,7 +6,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "UP!",
+      title: "up!",
       initialRoute: RouterService.SPLASH,
       getPages: RouterService().pages,
     );
