@@ -7,12 +7,11 @@ class UpText {
   static const Bold = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w700,
-    height: 30,
+    color: Colors.black,
   );
-
   static const BoldWhite = TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
-      height: 30,
-      color: Colors.white);
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
 }
