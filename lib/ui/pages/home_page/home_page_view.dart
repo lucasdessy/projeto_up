@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
+import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
 
 class HomePageView extends GetView<HomePageController> {
   @override
@@ -14,7 +15,7 @@ class HomePageView extends GetView<HomePageController> {
               case 0:
                 return HomeTabView();
               case 1:
-                return HomeTabView();
+                return SearchTabView();
               case 2:
                 return HomeTabView();
               default:

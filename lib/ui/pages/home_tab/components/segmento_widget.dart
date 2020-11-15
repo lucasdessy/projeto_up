@@ -13,35 +13,38 @@ class HomeTabSegmentoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 20),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+            left: 20,
+          ),
+          child: Text(
             "$segmento",
             style: UpText.Segment,
           ),
-          SizedBox(
-            height: 14,
-          ),
-          SizedBox(
-            height: 175,
-            child: ListView.builder(
-                itemCount: startups.length,
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (ctx, idx) {
-                  final Startup _startup = startups[idx];
-                  return HomeTabStartupCard(
-                    startup: _startup,
-                  );
-                }),
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 14,
+        ),
+        SizedBox(
+          height: 175,
+          child: ListView.builder(
+              itemCount: startups.length,
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (ctx, idx) {
+                final Startup _startup = startups[idx];
+                return HomeTabStartupCard(
+                  startup: _startup,
+                );
+              }),
+        ),
+      ],
     );
   }
 }

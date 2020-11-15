@@ -13,11 +13,14 @@ class HomeTabView extends GetView<HomeTabController> {
     return Scaffold(
       backgroundColor: UpColors.wireframe_white,
       body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         slivers: [
           UpHeader(),
+          CupertinoSliverRefreshControl(
+            onRefresh: controller.handleReload,
+          ),
           HomeTabGreetings(),
-          CupertinoSliverRefreshControl(),
           controller.loading()
               ? SliverToBoxAdapter(
                   child: CupertinoActivityIndicator(),

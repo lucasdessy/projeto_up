@@ -20,5 +20,5 @@ class HomeTabController extends GetxController {
     return startupService.startups;
   }
 
-  void handleReload() {}
+  Future<void> handleReload() async {}
 }
