@@ -11,7 +11,9 @@ class HomePageBindings implements Bindings {
     Get.put(HomePageController());
     Get.put(HomeTabController());
     Get.put(SearchTabController());
-    Get.create<ProjectPageController>(() => ProjectPageController());
+    Get.create<ProjectPageController>(() => ProjectPageController(),
+        tag: "nonTab", permanent: false);
+    Get.put(ProjectPageController(), tag: "tab");
   }
 }
 
