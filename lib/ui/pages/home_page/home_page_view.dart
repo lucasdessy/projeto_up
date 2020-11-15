@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
 import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
+import 'package:projeto_up/utils/up_colors.dart';
 
 class HomePageView extends GetView<HomePageController> {
   @override
@@ -24,7 +25,7 @@ class HomePageView extends GetView<HomePageController> {
           },
           tabBar: CupertinoTabBar(
             border: Border.all(width: 0, color: Colors.transparent),
-            backgroundColor: Colors.transparent,
+            backgroundColor: UpColors.wireframe_white.withAlpha(100),
             onTap: controller.handleNavBarTap,
             items: [
               BottomNavigationBarItem(

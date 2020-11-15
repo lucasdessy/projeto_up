@@ -20,6 +20,7 @@ class UpText {
     fontWeight: FontWeight.w600,
     color: Color.fromARGB(255, 156, 168, 170),
   );
+
   static const StartupCardTitle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,
@@ -35,6 +36,23 @@ class UpText {
     fontWeight: FontWeight.w500,
     color: Color.fromARGB(255, 82, 29, 195),
   );
+
+  static const SearchCardTitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 255, 255, 255),
+  );
+  static const SearchCardSubtitle = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w300,
+    color: Color.fromARGB(255, 255, 255, 255),
+  );
+  static const SearchCardViewCount = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 255, 255, 255),
+  );
+
   static const SearchField = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w500,
