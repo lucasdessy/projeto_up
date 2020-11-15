@@ -8,10 +8,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "up!",
-      initialRoute: RouterService.SPLASH,
+      initialRoute: RouterService.SIMPLE_SPLASH,
       getPages: RouterService().pages,
       theme: ThemeData(
-        primaryColor: UpColors.primary,
+        primaryColor: UpColors.primary_dark,
       ),
     );
   }
