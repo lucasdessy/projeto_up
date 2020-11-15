@@ -7,8 +7,7 @@ import 'package:projeto_up/utils/up_text.dart';
 class HomeTabStartupCard extends StatelessWidget {
   final Startup startup;
 
-  const HomeTabStartupCard({Key key, @required this.startup})
-      : super(key: key);
+  const HomeTabStartupCard({Key key, @required this.startup}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
