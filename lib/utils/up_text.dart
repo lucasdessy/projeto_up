@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_up/utils/up_colors.dart';
 
 class UpText {
   static const Bold = TextStyle(
@@ -33,5 +34,15 @@ class UpText {
     fontSize: 10,
     fontWeight: FontWeight.w500,
     color: Color.fromARGB(255, 82, 29, 195),
+  );
+  static const SearchField = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    color: UpColors.wireframe_regular,
+  );
+  static const SearchFieldActive = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    color: UpColors.wireframe_lightest,
   );
 }
