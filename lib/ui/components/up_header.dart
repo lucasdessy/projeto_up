@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:projeto_up/utils/up_colors.dart';
 
 class UpHeader extends StatelessWidget {
   @override
@@ -9,12 +10,11 @@ class UpHeader extends StatelessWidget {
       centerTitle: true,
       expandedHeight: 87,
       toolbarHeight: 87,
-      title: Center(
-        child: SvgPicture.asset(
-          'assets/svg/up!.svg',
-          height: 35,
-          alignment: Alignment.center,
-        ),
+      iconTheme: IconThemeData(color: UpColors.wireframe_darkest),
+      title: SvgPicture.asset(
+        'assets/svg/up!.svg',
+        height: 35,
+        alignment: Alignment.center,
       ),
     );
   }
