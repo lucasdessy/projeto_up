@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_up/models/startup.dart';
-import 'package:projeto_up/ui/pages/home_page/components/startup_card.dart';
+import 'package:projeto_up/ui/pages/home_tab/components/startup_card.dart';
 import 'package:projeto_up/utils/up_text.dart';
 
-class HomePageSegmentoWidget extends StatelessWidget {
+class HomeTabSegmentoWidget extends StatelessWidget {
   final String segmento;
   final List<Startup> startups;
 
-  const HomePageSegmentoWidget(
+  const HomeTabSegmentoWidget(
       {Key key, @required this.segmento, @required this.startups})
       : super(key: key);
 
@@ -35,7 +35,7 @@ class HomePageSegmentoWidget extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (ctx, idx) {
                   final Startup _startup = startups[idx];
-                  return HomePageStartupCard(
+                  return HomeTabStartupCard(
                     startup: _startup,
                   );
                 }),

@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/utils/up_text.dart';
 
-class HomePageStartupCard extends StatelessWidget {
+class HomeTabStartupCard extends StatelessWidget {
   final Startup startup;
 
-  const HomePageStartupCard({Key key, @required this.startup})
+  const HomeTabStartupCard({Key key, @required this.startup})
       : super(key: key);
 
   @override

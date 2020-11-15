@@ -2,14 +2,14 @@ import 'package:get/get.dart';
 import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/services/startup_service.dart';
 
-class HomePageBindings implements Bindings {
+class HomeTabBindings implements Bindings {
   @override
   void dependencies() {
-    Get.put(HomePageController());
+    Get.put(HomeTabController());
   }
 }
 
-class HomePageController extends GetxController {
+class HomeTabController extends GetxController {
   final StartupService startupService = Get.find();
 
   RxBool get loading {

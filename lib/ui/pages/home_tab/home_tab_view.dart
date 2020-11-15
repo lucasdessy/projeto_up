@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/ui/components/up_header.dart';
-import 'package:projeto_up/ui/pages/home_page/components/greetings.dart';
-import 'package:projeto_up/ui/pages/home_page/components/listing.dart';
-import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
+import 'package:projeto_up/ui/pages/home_tab/components/greetings.dart';
+import 'package:projeto_up/ui/pages/home_tab/components/listing.dart';
+import 'package:projeto_up/ui/pages/home_tab/home_tab_bloc.dart';
 
-class HomePageView extends GetView<HomePageController> {
+class HomeTabView extends GetView<HomeTabController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,13 +15,13 @@ class HomePageView extends GetView<HomePageController> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           UpHeader(),
-          HomePageGreetings(),
+          HomeTabGreetings(),
           CupertinoSliverRefreshControl(),
           controller.loading()
               ? SliverToBoxAdapter(
                   child: CupertinoActivityIndicator(),
                 )
-              : HomePageListing(
+              : HomeTabListing(
                   startups: controller.startups,
                 ),
         ],

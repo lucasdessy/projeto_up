@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePageGreetings extends StatelessWidget {
+class HomeTabGreetings extends StatelessWidget {
   // Isso foi dificil
   final Shader gradient = LinearGradient(
     colors: [
