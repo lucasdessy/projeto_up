@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:projeto_up/models/startup.dart';
+import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
 
 class HomeTabBindings implements Bindings {
@@ -21,4 +22,8 @@ class HomeTabController extends GetxController {
   }
 
   Future<void> handleReload() async {}
+
+  void handleCardTap(String startupId) {
+    Get.toNamed("${RouterService.PROJECTS}$startupId");
+  }
 }

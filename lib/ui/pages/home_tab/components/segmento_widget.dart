@@ -6,9 +6,12 @@ import 'package:projeto_up/utils/up_text.dart';
 class HomeTabSegmentoWidget extends StatelessWidget {
   final String segmento;
   final List<Startup> startups;
-
+  final Function(String) onTap;
   const HomeTabSegmentoWidget(
-      {Key key, @required this.segmento, @required this.startups})
+      {Key key,
+      @required this.segmento,
+      @required this.startups,
+      @required this.onTap})
       : super(key: key);
 
   @override
@@ -41,6 +44,7 @@ class HomeTabSegmentoWidget extends StatelessWidget {
                 final Startup _startup = startups[idx];
                 return HomeTabStartupCard(
                   startup: _startup,
+                  onTap: onTap,
                 );
               }),
         ),

@@ -98,6 +98,20 @@ class SearchTabSearchResultCars extends StatelessWidget {
                   ),
                 ),
               ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Material(
+                  type: MaterialType.transparency,
+                  elevation: 0,
+                  child: Container(
+                    height: 110,
+                    width: 335,
+                    child: InkWell(
+                      onTap: () {},
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

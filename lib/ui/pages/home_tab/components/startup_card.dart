@@ -7,8 +7,10 @@ import 'package:projeto_up/utils/up_text.dart';
 
 class HomeTabStartupCard extends StatelessWidget {
   final Startup startup;
-
-  const HomeTabStartupCard({Key key, @required this.startup}) : super(key: key);
+  final Function(String) onTap;
+  const HomeTabStartupCard(
+      {Key key, @required this.startup, @required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +95,20 @@ class HomeTabStartupCard extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Material(
+                type: MaterialType.transparency,
+                elevation: 0,
+                child: Container(
+                  height: 175,
+                  width: 193,
+                  child: InkWell(
+                    onTap: () => onTap(startup.id),
+                  ),
+                ),
               ),
             ),
           ],

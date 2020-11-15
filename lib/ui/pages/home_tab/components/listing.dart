@@ -4,8 +4,9 @@ import 'package:projeto_up/ui/pages/home_tab/components/segmento_widget.dart';
 
 class HomeTabListing extends StatelessWidget {
   final Map<String, List<Startup>> startups;
-
-  const HomeTabListing({Key key, @required this.startups}) : super(key: key);
+  final Function(String) onTap;
+  const HomeTabListing({Key key, @required this.startups, @required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class HomeTabListing extends StatelessWidget {
             return HomeTabSegmentoWidget(
               segmento: _segmento,
               startups: _startups,
+              onTap: onTap,
             );
           }),
     );

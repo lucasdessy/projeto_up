@@ -27,6 +27,7 @@ class HomeTabView extends GetView<HomeTabController> {
                 )
               : HomeTabListing(
                   startups: controller.startups,
+                  onTap: controller.handleCardTap,
                 ),
         ],
       ),
