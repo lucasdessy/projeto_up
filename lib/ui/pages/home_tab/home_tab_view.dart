@@ -5,12 +5,13 @@ import 'package:projeto_up/ui/components/up_header.dart';
 import 'package:projeto_up/ui/pages/home_tab/components/greetings.dart';
 import 'package:projeto_up/ui/pages/home_tab/components/listing.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_bloc.dart';
+import 'package:projeto_up/utils/up_colors.dart';
 
 class HomeTabView extends GetView<HomeTabController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: UpColors.wireframe_white,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

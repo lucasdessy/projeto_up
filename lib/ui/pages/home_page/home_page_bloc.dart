@@ -14,8 +14,9 @@ class HomePageBindings implements Bindings {
 class HomePageController extends GetxController {
   RxInt activeIndex = 0.obs;
 
-  Color getColor(int index) =>
-      index == activeIndex() ? UpColors.primary_dark : UpColors.wireframe;
+  Color getColor(int index) => index == activeIndex()
+      ? UpColors.primary_dark
+      : UpColors.wireframe_darkest;
 
   void handleNavBarTap(int index) {
     activeIndex.value = index;
