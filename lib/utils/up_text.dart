@@ -63,4 +63,14 @@ class UpText {
     fontWeight: FontWeight.w500,
     color: UpColors.wireframe_lightest,
   );
+  static const StartupProjectCardName = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 46, 46, 46),
+  );
+  static const StartupProjectCardSubtitle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 85, 85, 85),
+  );
 }
