@@ -23,11 +23,16 @@ class SearchTabView extends GetView<SearchTabController> {
           SearchTabSearchField(
             controller: controller.searchController,
           ),
-          controller.loading()
-              ? SliverToBoxAdapter(
-                  child: CupertinoActivityIndicator(),
-                )
-              : SearchTabListing(),
+          Obx(
+            () => controller.loading
+                ? SliverFillRemaining(
+                    child: Center(child: CupertinoActivityIndicator()),
+                  )
+                : SearchTabListing(
+                    projectsStartupsList: controller.projectsStartupsList,
+                    onTap: controller.handleCardTap,
+                  ),
+          ),
         ],
       ),
     );

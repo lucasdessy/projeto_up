@@ -8,6 +8,7 @@ import 'package:projeto_up/utils/up_text.dart';
 class HomeTabStartupCard extends StatelessWidget {
   final Startup startup;
   final Function(String) onTap;
+
   const HomeTabStartupCard(
       {Key key, @required this.startup, @required this.onTap})
       : super(key: key);
@@ -15,22 +16,26 @@ class HomeTabStartupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 10,
-            color: Color.fromARGB(60, 0, 0, 0),
-          ),
-        ],
-      ),
       margin: EdgeInsets.only(left: 20),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: Stack(
           children: [
             Container(
-              color: UpColors.wireframe_white,
-              width: 193,
+              width: 200,
+              height: 174,
+              margin: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: UpColors.wireframe_white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 10,
+                    spreadRadius: -10,
+                    offset: Offset(0, 10),
+                    color: Color.fromARGB(25, 0, 0, 0),
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
                   Image.network(
@@ -97,8 +102,10 @@ class HomeTabStartupCard extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomRight,
+            Container(
+              width: 200,
+              height: 174,
+              margin: EdgeInsets.all(5),
               child: Material(
                 type: MaterialType.transparency,
                 elevation: 0,

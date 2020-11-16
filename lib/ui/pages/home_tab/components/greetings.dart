@@ -9,6 +9,7 @@ class HomeTabGreetings extends StatelessWidget {
     ],
     stops: [0, 0.4],
   ).createShader(Rect.fromLTWH(0.0, 0.0, 248, 60.0));
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(

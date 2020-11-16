@@ -21,9 +21,11 @@ class HomeTabController extends GetxController {
     return startupService.startups;
   }
 
-  Future<void> handleReload() async {}
+  Future<void> handleReload() async {
+    await startupService.reloadCompanies();
+  }
 
   void handleCardTap(String startupId) {
-    Get.toNamed("${RouterService.PROJECTS}$startupId");
+    Get.toNamed("${RouterService.PROJECTS}$startupId", id: 1);
   }
 }

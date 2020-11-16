@@ -21,14 +21,16 @@ class HomeTabView extends GetView<HomeTabController> {
             onRefresh: controller.handleReload,
           ),
           HomeTabGreetings(),
-          controller.loading()
-              ? SliverToBoxAdapter(
-                  child: CupertinoActivityIndicator(),
-                )
-              : HomeTabListing(
-                  startups: controller.startups,
-                  onTap: controller.handleCardTap,
-                ),
+          Obx(
+            () => controller.loading()
+                ? SliverFillRemaining(
+                    child: Center(child: CupertinoActivityIndicator()),
+                  )
+                : HomeTabListing(
+                    startups: controller.startups,
+                    onTap: controller.handleCardTap,
+                  ),
+          ),
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:projeto_up/ui/pages/home_tab/components/segmento_widget.dart';
 class HomeTabListing extends StatelessWidget {
   final Map<String, List<Startup>> startups;
   final Function(String) onTap;
+
   const HomeTabListing({Key key, @required this.startups, @required this.onTap})
       : super(key: key);
 

@@ -1,12 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:projeto_up/models/projeto.dart';
+import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_text.dart';
 
-class SearchTabSearchResultCars extends StatelessWidget {
+class SearchTabSearchResultCard extends StatelessWidget {
+  final dynamic startupOrProject;
+  final Function(String) onTap;
+  const SearchTabSearchResultCard(
+      {Key key, @required this.startupOrProject, @required this.onTap})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
+    String nome = "";
+    String tipo = "";
+    String capaUrl = "";
+    String startupId;
+    if (startupOrProject is Startup) {
+      Startup _tempStartup = startupOrProject;
+      nome = _tempStartup.nome;
+      tipo = "Startup";
+      capaUrl = _tempStartup.capaUrl;
+      startupId = _tempStartup.id;
+    } else if (startupOrProject is Projeto) {
+      Projeto _tempProjeto = startupOrProject;
+      nome = _tempProjeto.nomeProjeto;
+      tipo = "Projeto";
+      capaUrl = _tempProjeto.capaUrl;
+      startupId = _tempProjeto.idStartup;
+    } else {
+      return Container();
+    }
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 10),
       child: SizedBox(
@@ -19,7 +45,7 @@ class SearchTabSearchResultCars extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 child: Image.network(
-                  "hsg",
+                  capaUrl,
                   height: 110,
                   fit: BoxFit.cover,
                   errorBuilder: (ctx, obj, stack) {
@@ -59,11 +85,11 @@ class SearchTabSearchResultCars extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Nome",
+                          nome,
                           style: UpText.SearchCardTitle,
                         ),
                         Text(
-                          "Startup",
+                          tipo,
                           style: UpText.SearchCardSubtitle,
                         )
                       ],
@@ -107,7 +133,7 @@ class SearchTabSearchResultCars extends StatelessWidget {
                     height: 110,
                     width: 335,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () => onTap(startupId),
                     ),
                   ),
                 ),

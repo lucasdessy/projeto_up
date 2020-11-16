@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
+import 'package:projeto_up/ui/pages/home_tab/components/projects_service.dart';
 
 class SearchTabBindings implements Bindings {
   @override
@@ -12,10 +14,26 @@ class SearchTabBindings implements Bindings {
 class SearchTabController extends GetxController {
   final TextEditingController searchController = TextEditingController();
   final StartupService startupService = Get.find();
-
-  RxBool get loading {
-    return startupService.loading;
+  final ProjectsService projectsService = Get.find();
+  bool get loading {
+    return startupService.loading() || projectsService.loading();
   }
 
-  Future<void> handleReload() async {}
+  Future<void> handleReload() async {
+    await startupService.reloadCompanies();
+    await projectsService.reloadProjects();
+  }
+
+  List<dynamic> get projectsStartupsList {
+    List<dynamic> _tempList = [
+      ...startupService.startupsList,
+      ...projectsService.projectsList
+    ];
+    _tempList.shuffle(); //TODO make something better to do with this
+    return _tempList;
+  }
+
+  void handleCardTap(String startupId) {
+    Get.toNamed("${RouterService.PROJECTS}$startupId", id: 2);
+  }
 }
