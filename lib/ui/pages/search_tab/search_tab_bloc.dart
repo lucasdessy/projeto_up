@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
-import 'package:projeto_up/ui/pages/home_tab/components/projects_service.dart';
+import 'package:projeto_up/services/projects_service.dart';
 
 class SearchTabBindings implements Bindings {
   @override
