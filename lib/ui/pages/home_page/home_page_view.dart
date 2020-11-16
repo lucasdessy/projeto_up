@@ -9,21 +9,24 @@ import 'package:projeto_up/utils/up_colors.dart';
 class HomePageView extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return WillPopScope(
+      onWillPop: controller.onWillPop,
+      child: Obx(
+        () => Scaffold(
           body: IndexedStack(
             children: [
               Navigator(
-                key: Get.nestedKey(1),
+                key: Get.nestedKey(0),
                 initialRoute: RouterService.HOME_TAB,
                 onGenerateRoute: RouterService.onGenerateRoute,
               ),
               Navigator(
-                key: Get.nestedKey(2),
+                key: Get.nestedKey(1),
                 initialRoute: RouterService.SEARCH_TAB,
                 onGenerateRoute: RouterService.onGenerateRoute,
               ),
               Navigator(
-                key: Get.nestedKey(3),
+                key: Get.nestedKey(2),
                 initialRoute: RouterService.MY_PROFILE_TAB,
                 onGenerateRoute: RouterService.onGenerateRoute,
               ),
@@ -56,6 +59,8 @@ class HomePageView extends GetView<HomePageController> {
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

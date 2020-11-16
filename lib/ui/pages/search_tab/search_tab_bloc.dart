@@ -66,6 +66,6 @@ class SearchTabController extends GetxController {
 
   void handleCardTap(String startupId) {
     Get.toNamed("${RouterService.PROJECTS_2}$startupId?notPersonal=true",
-        id: 2);
+        id: 1);
   }
 }

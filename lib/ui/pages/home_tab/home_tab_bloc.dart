@@ -27,6 +27,6 @@ class HomeTabController extends GetxController {
 
   void handleCardTap(String startupId) {
     Get.toNamed("${RouterService.PROJECTS_1}$startupId?notPersonal=true",
-        id: 1);
+        id: 0);
   }
 }

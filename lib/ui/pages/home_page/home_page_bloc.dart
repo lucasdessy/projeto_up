@@ -27,4 +27,8 @@ class HomePageController extends GetxController {
   void handleNavBarTap(int index) {
     activeIndex.value = index;
   }
+
+  Future<bool> onWillPop() async {
+    return !await Get.keys[activeIndex()].currentState.maybePop();
+  }
 }
