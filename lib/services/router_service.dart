@@ -34,24 +34,20 @@ class RouterService {
       page: () => HomePageView(),
       binding: HomePageBindings(),
     ),
+    GetPage(
+      name: PROJECTS + ":startupId",
+      page: () => ProjectPageNonTab(),
+    ), //URL Dinamica para ser tratada no nested navigator
   ];
 
   //Usado pelo nested navigator
   static const String HOME_TAB = '/home';
   static const String SEARCH_TAB = '/search';
   static const String MY_PROFILE_TAB = '/my-profile';
-  static const String PROJECTS = '/projects/'; // Recebe startupId
+  static const String PROJECTS = '/projects/';
 
   // ignore: missing_return
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    //URL dinamicas
-    if (settings.name.startsWith(PROJECTS)) {
-      return GetPageRoute(
-        settings: settings,
-        page: () => ProjectPageNonTab(),
-      );
-    }
-
     //URL estaticas
     switch (settings.name) {
       case HOME_TAB:
@@ -69,7 +65,33 @@ class RouterService {
           settings: settings,
           page: () => ProjectPageTab(),
         );
-      default:
     }
+
+    // Urls dinamicas
+    if (settings.name.startsWith(PROJECTS)) {
+      return generateRouteGet(settings);
+    }
+  }
+
+  //copy pasta
+  static GetPageRoute generateRouteGet(RouteSettings settings) {
+    final match = Get.routeTree.matchRoute(settings.name);
+    Get.parameters = match?.parameters;
+    return GetPageRoute(
+      page: match.route.page,
+      parameter: match.route.parameter,
+      settings:
+          RouteSettings(name: settings.name, arguments: settings.arguments),
+      curve: match.route.curve,
+      opaque: match.route.opaque,
+      customTransition: match.route.customTransition,
+      binding: match.route.binding,
+      bindings: match.route.bindings,
+      transitionDuration:
+          (match.route.transitionDuration ?? Get.defaultTransitionDuration),
+      transition: match.route.transition,
+      popGesture: match.route.popGesture,
+      fullscreenDialog: match.route.fullscreenDialog,
+    );
   }
 }
