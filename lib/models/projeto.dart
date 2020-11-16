@@ -24,7 +24,7 @@ class Projeto {
       nomeProjeto: snapshot.data()["nome_projeto"],
       descricao: snapshot.data()["descricao"],
       capaUrl: snapshot.data()["capa_url"],
-      likes: int.tryParse(snapshot.data()["likes"]) ?? 0,
+      likes: int.tryParse(snapshot.data()["likes"].toString()) ?? 0,
     );
   }
 
