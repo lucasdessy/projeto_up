@@ -33,7 +33,8 @@ class HomePageView extends GetView<HomePageController> {
             ],
             index: controller.activeIndex(),
           ),
-          bottomNavigationBar: CupertinoTabBar( //TODO fazer navbar fiel ao projeto
+          bottomNavigationBar: CupertinoTabBar(
+            //TODO fazer navbar fiel ao projeto
             border: Border.all(width: 0, color: Colors.transparent),
             backgroundColor: UpColors.wireframe_white.withAlpha(100),
             onTap: controller.handleNavBarTap,
