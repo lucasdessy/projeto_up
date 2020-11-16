@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
 import 'package:projeto_up/services/user_service.dart';
+import 'package:projeto_up/ui/pages/home_tab/components/projects_service.dart';
 import 'package:projeto_up/utils/up_config.dart';
 
 class AppService extends GetxService {
@@ -17,7 +18,7 @@ class AppService extends GetxService {
   void onInit() {
     Get.put(UserService());
     Get.put(StartupService());
-
+    Get.put(ProjectsService());
     super.onInit();
   }
 

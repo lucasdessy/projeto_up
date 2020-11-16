@@ -9,23 +9,27 @@ class StartupService extends GetxService {
   static const colName = "startups";
   RxBool loading = false.obs;
   Map<String, List<Startup>> startups = Map<String, List<Startup>>();
-
+  List<Startup> startupsList = List<Startup>();
   @override
   void onReady() async {
-    _getCompanies();
+    await _getCompanies();
     super.onReady();
   }
 
   void _setLoading(bool v) {
     loading.value = v;
+    loading.refresh();
   }
 
-  void _getCompanies() async {
+  Future<void> _getCompanies() async {
     _setLoading(true);
+    startups = Map<String, List<Startup>>(); // Reset
+    startupsList = List<Startup>(); // Reset
     QuerySnapshot snap = await _firestore.collection(colName).get();
     List<Startup> _startupsTemp =
         snap.docs.map((e) => Startup.fromDocument(e)).toList();
     for (final _startup in _startupsTemp) {
+      startupsList.add(_startup);
       if (startups[_startup.segmento] != null) {
         startups[_startup.segmento].add(_startup);
       } else {
@@ -34,5 +38,9 @@ class StartupService extends GetxService {
       }
     }
     _setLoading(false);
+  }
+
+  Future<void> reloadCompanies() async {
+    await _getCompanies();
   }
 }
