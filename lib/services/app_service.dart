@@ -42,10 +42,32 @@ class AppService extends GetxService {
     await precachePicture(
         ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/up!.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/svg/align-left.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/svg/book-open.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/dot.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/svg/facebook.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/svg/instagram.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/phone.svg'),
+        null);
 
     await precacheImage(AssetImage('assets/png/foguete.png'), Get.context);
     await precacheImage(AssetImage('assets/png/stars.png'), Get.context);
-
+    await precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context);
     Get.offAllNamed(RouterService.SPLASH);
 
     await Future.delayed(
