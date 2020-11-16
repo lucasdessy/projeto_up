@@ -5,10 +5,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:projeto_up/services/projects_service.dart';
 import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
 import 'package:projeto_up/services/user_service.dart';
-import 'package:projeto_up/services/projects_service.dart';
 import 'package:projeto_up/utils/up_config.dart';
 
 class AppService extends GetxService {
