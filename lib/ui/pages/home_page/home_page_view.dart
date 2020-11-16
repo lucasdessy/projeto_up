@@ -2,29 +2,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:projeto_up/services/router_service.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
-import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
-import 'package:projeto_up/ui/pages/project_page/project_page_tab.dart';
-import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 
 class HomePageView extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
-    return Obx(() => CupertinoTabScaffold(
-          tabBuilder: (context, index) {
-            switch (controller.activeIndex()) {
-              case 0:
-                return HomeTabView();
-              case 1:
-                return SearchTabView();
-              case 2:
-                return ProjectPageTab();
-              default:
-                return Container(); // Isso nao deve acontecer
-            }
-          },
-          tabBar: CupertinoTabBar(
+    return Obx(() => Scaffold(
+          body: IndexedStack(
+            children: [
+              Navigator(
+                key: Get.nestedKey(1),
+                initialRoute: RouterService.HOME_TAB,
+                onGenerateRoute: RouterService.onGenerateRoute,
+              ),
+              Navigator(
+                key: Get.nestedKey(2),
+                initialRoute: RouterService.SEARCH_TAB,
+                onGenerateRoute: RouterService.onGenerateRoute,
+              ),
+              Navigator(
+                key: Get.nestedKey(3),
+                initialRoute: RouterService.MY_PROFILE_TAB,
+                onGenerateRoute: RouterService.onGenerateRoute,
+              ),
+              // HomeTabView(),
+              // SearchTabView(),
+              // ProjectPageTab(),
+            ],
+            index: controller.activeIndex(),
+          ),
+          bottomNavigationBar: CupertinoTabBar( //TODO fazer navbar fiel ao projeto
             border: Border.all(width: 0, color: Colors.transparent),
             backgroundColor: UpColors.wireframe_white.withAlpha(100),
             onTap: controller.handleNavBarTap,
