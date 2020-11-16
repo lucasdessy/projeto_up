@@ -43,4 +43,11 @@ class StartupService extends GetxService {
   Future<void> reloadCompanies() async {
     await _getCompanies();
   }
+
+  Future<Startup> getStartup(String startupId) async {
+    DocumentSnapshot snap =
+        await _firestore.collection(colName).doc(startupId).get();
+    Startup _tempStartup = Startup.fromDocument(snap);
+    return _tempStartup;
+  }
 }

@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_view.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
-import 'package:projeto_up/ui/pages/project_page/project_page_nontab.dart';
-import 'package:projeto_up/ui/pages/project_page/project_page_tab.dart';
+import 'package:projeto_up/ui/pages/project_page/project_page_my_profile.dart';
+import 'package:projeto_up/ui/pages/project_page/project_page_tab1.dart';
 import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
 import 'package:projeto_up/ui/pages/simple_splash_page/simple_splash_page_view.dart';
 import 'package:projeto_up/ui/pages/splash_page/splash_page_view.dart';
@@ -35,8 +35,12 @@ class RouterService {
       binding: HomePageBindings(),
     ),
     GetPage(
-      name: PROJECTS + ":startupId",
-      page: () => ProjectPageNonTab(),
+      name: PROJECTS_1 + ":startupId",
+      page: () => ProjectPageTab1(),
+    ), //URL Dinamica para ser tratada no nested navigator
+    GetPage(
+      name: PROJECTS_2 + ":startupId",
+      page: () => ProjectPageTab1(),
     ), //URL Dinamica para ser tratada no nested navigator
   ];
 
@@ -44,7 +48,8 @@ class RouterService {
   static const String HOME_TAB = '/home';
   static const String SEARCH_TAB = '/search';
   static const String MY_PROFILE_TAB = '/my-profile';
-  static const String PROJECTS = '/projects/';
+  static const String PROJECTS_1 = '/projects-1/';
+  static const String PROJECTS_2 = '/projects-2/';
 
   // ignore: missing_return
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -63,12 +68,13 @@ class RouterService {
       case MY_PROFILE_TAB:
         return GetPageRoute(
           settings: settings,
-          page: () => ProjectPageTab(),
+          page: () => ProjectPageMyProfile(),
         );
     }
 
     // Urls dinamicas
-    if (settings.name.startsWith(PROJECTS)) {
+    if (settings.name.startsWith(PROJECTS_1) ||
+        settings.name.startsWith(PROJECTS_2)) {
       return generateRouteGet(settings);
     }
   }
