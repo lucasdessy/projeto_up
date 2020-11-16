@@ -15,6 +15,7 @@ class SearchTabController extends GetxController {
   final TextEditingController searchController = TextEditingController();
   final StartupService startupService = Get.find();
   final ProjectsService projectsService = Get.find();
+
   bool get loading {
     return startupService.loading() || projectsService.loading();
   }
@@ -34,6 +35,6 @@ class SearchTabController extends GetxController {
   }
 
   void handleCardTap(String startupId) {
-    Get.toNamed("${RouterService.PROJECTS}$startupId", id: 2);
+    Get.toNamed("${RouterService.PROJECTS}$startupId?notPersonal=true", id: 2);
   }
 }
