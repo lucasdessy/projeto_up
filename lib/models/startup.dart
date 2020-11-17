@@ -42,10 +42,10 @@ class Startup {
       return Startup(
         id: snapshot.id,
         nome: snapshot.data()["nome"],
-        capaUrl: snapshot.data()["capa_url"],
+        capaUrl: snapshot.data()["capa_url"] ?? "",
         segmento: snapshot.data()["segmento"],
         descricao: snapshot.data()["descricao"],
-        pitchUrl: snapshot.data()["pitch_url"],
+        pitchUrl: snapshot.data()["pitch_url"] ?? "",
         whatsapp: snapshot.data()["whatsapp"],
         instagram: snapshot.data()["instagram"],
         facebook: snapshot.data()["facebook"],
