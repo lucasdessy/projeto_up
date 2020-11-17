@@ -25,49 +25,55 @@ class AppService extends GetxService {
   @override
   void onReady() async {
     // Coloca todas imagens em cache para que nao haja bugs visuais
-
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/fire.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/home.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(
-            SvgPicture.svgStringDecoder, 'assets/svg/more-horizontal.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/search.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/up!.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(
-            SvgPicture.svgStringDecoder, 'assets/svg/align-left.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(
-            SvgPicture.svgStringDecoder, 'assets/svg/book-open.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/dot.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(
-            SvgPicture.svgStringDecoder, 'assets/svg/facebook.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(
-            SvgPicture.svgStringDecoder, 'assets/svg/instagram.svg'),
-        null);
-    await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/phone.svg'),
-        null);
-
-    await precacheImage(AssetImage('assets/png/foguete.png'), Get.context);
-    await precacheImage(AssetImage('assets/png/stars.png'), Get.context);
-    await precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context);
+    await Future.wait([
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/fire.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/home.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/more-horizontal.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/search.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/up!.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/align-left.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/book-open.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/dot.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/facebook.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/instagram.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/phone.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/linha.svg'),
+          null),
+      precacheImage(AssetImage('assets/png/foguete.png'), Get.context),
+      precacheImage(AssetImage('assets/png/stars.png'), Get.context),
+      precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context),
+    ]);
     Get.offAllNamed(RouterService.SPLASH);
 
     await Future.delayed(
