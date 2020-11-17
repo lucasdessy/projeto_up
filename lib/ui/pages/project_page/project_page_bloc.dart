@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
 import 'package:projeto_up/models/membro.dart';
+import 'package:projeto_up/models/projeto.dart';
 import 'package:projeto_up/models/startup.dart';
+import 'package:projeto_up/services/projects_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
 
 class ProjectPageController extends GetxController {
   final StartupService startupService = Get.find();
+  final ProjectsService projectsService = Get.find();
   Startup startup = Startup();
-  RxBool loading = true.obs;
   bool isNotPersonal = Get.parameters["notPersonal"] == "true";
   String startupId = Get.parameters["startupId"];
+  List<Projeto> projects = List<Projeto>();
 
   @override
   void onInit() {
@@ -21,10 +24,12 @@ class ProjectPageController extends GetxController {
     super.onReady();
   }
 
+  bool get loading {
+    return startupService.loading() || projectsService.loading();
+  }
+
   void _loadCompany() async {
-    loading.value = true;
     if (!isNotPersonal) {
-      loading.value = false;
       startup = Startup(
           nome: "Carregando...",
           capaUrl: "",
@@ -41,6 +46,6 @@ class ProjectPageController extends GetxController {
       return;
     }
     startup = await startupService.getStartup(startupId);
-    loading.value = false;
+    projects = await projectsService.getProjectsById(startupId);
   }
 }

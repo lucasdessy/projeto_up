@@ -58,7 +58,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
           return [
             UpHeader(),
             Obx(
-              () => widget.controller.loading()
+              () => widget.controller.loading
                   ? SliverToBoxAdapter(
                       child: Container(),
                     )
@@ -77,7 +77,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
             physics: const NeverScrollableScrollPhysics(),
             controller: controller,
             children: [
-              if (widget.controller.loading()) ...[
+              if (widget.controller.loading) ...[
                 Center(
                   child: CupertinoActivityIndicator(),
                 ),

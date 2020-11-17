@@ -32,4 +32,16 @@ class ProjectsService extends GetxService {
   Future<void> reloadProjects() async {
     await _getProjects();
   }
+
+  Future<List<Projeto>> getProjectsById(String startupId) async {
+    _setLoading(true);
+    QuerySnapshot snap = await _firestore
+        .collection(colName)
+        .where('id_startup', isEqualTo: startupId)
+        .get();
+    List<Projeto> _projectsTemp =
+        snap.docs.map((e) => Projeto.fromDocument(e)).toList();
+    _setLoading(false);
+    return _projectsTemp;
+  }
 }
