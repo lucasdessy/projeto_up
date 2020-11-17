@@ -73,4 +73,20 @@ class UpText {
     fontWeight: FontWeight.w400,
     color: Color.fromARGB(255, 85, 85, 85),
   );
+
+  static const ProjectPageTitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 51, 51, 51),
+  );
+  static const ProjectPageTitleBold = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 51, 51, 51),
+  );
+  static const ProjectPageDesc = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 85, 85, 85),
+  );
 }
