@@ -12,10 +12,12 @@ class ProjectPagePortfolioTab extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO fazer pagina de detalhes (possivelmente com navegador extra)
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20),
+      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: GridView.builder(
+        padding: EdgeInsets.zero,
         physics: const BouncingScrollPhysics(),
         itemCount: projetos.length,
+        shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 163 / 110,

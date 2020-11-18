@@ -6,6 +6,7 @@ import 'package:projeto_up/ui/pages/project_page/components/at_a_glance_card.dar
 import 'package:projeto_up/ui/pages/project_page/components/tabs/contato_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/home_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/portfolio_tab.dart';
+import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/SliverHeaderDelegate.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_bloc.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 
@@ -51,52 +52,52 @@ class _ProjectPageViewState extends State<ProjectPageView>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UpColors.wireframe_white,
-      body: NestedScrollView(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        headerSliverBuilder: (ctx, isScrolled) {
-          return [
-            UpHeader(),
-            Obx(
-              () => widget.controller.loading
-                  ? SliverToBoxAdapter(
-                      child: Container(),
-                    )
-                  : SliverToBoxAdapter(
-                      child: ProjectPageAtAGlanceCard(
-                        startup: widget.controller.startup,
-                        getColor: getColor,
-                        animateTo: animateTo,
-                      ),
+      body: Obx(
+        () => SafeArea(
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            slivers: [
+              UpHeader(),
+              if (widget.controller.loading)
+                SliverFillRemaining(
+                  child: Center(
+                    child: CupertinoActivityIndicator(),
+                  ),
+                )
+              else ...[
+                SliverPersistentHeader(
+                  delegate: ProjectPageSliverHeaderDelegate(
+                    child: ProjectPageAtAGlanceCard(
+                      startup: widget.controller.startup,
+                      animateTo: animateTo,
+                      getColor: getColor,
                     ),
-            )
-          ];
-        },
-        body: Obx(
-          () => TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: controller,
-            children: [
-              if (widget.controller.loading) ...[
-                Center(
-                  child: CupertinoActivityIndicator(),
+                    maxSize: 262,
+                    minSize: 262,
+                  ),
+                  pinned: true,
+                  // floating: true,
                 ),
-                Center(
-                  child: CupertinoActivityIndicator(),
-                ),
-                Center(
-                  child: CupertinoActivityIndicator(),
-                ),
-              ] else ...[
-                ProjectPageHomeTab(
-                  startup: widget.controller.startup,
-                ),
-                ProjectPagePortfolioTab(
-                  projetos: widget.controller.projects,
-                ),
-                ProjectPageContatoTab(
-                  startup: widget.controller.startup,
+                SliverToBoxAdapter(
+                  child: ListView(
+                      padding: EdgeInsets.only(bottom: 15),
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      children: [
+                        [
+                          ProjectPageHomeTab(
+                            startup: widget.controller.startup,
+                          ),
+                          ProjectPagePortfolioTab(
+                            projetos: widget.controller.projects,
+                          ),
+                          ProjectPageContatoTab(
+                            startup: widget.controller.startup,
+                          ),
+                        ][currentIndex],
+                      ]),
                 ),
               ]
             ],
