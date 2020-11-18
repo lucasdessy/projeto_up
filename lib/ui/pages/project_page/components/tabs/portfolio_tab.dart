@@ -1,33 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_up/models/projeto.dart';
-import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projeto_card.dart';
+import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projects_listing.dart';
 
-class ProjectPagePortfolioTab extends StatelessWidget {
+class ProjectPagePortfolioTab extends StatefulWidget {
   final List<Projeto> projetos;
+  ProjectPagePortfolioTab({
+    Key key,
+    @required this.projetos,
+  }) : super(key: key);
 
-  const ProjectPagePortfolioTab({Key key, @required this.projetos})
-      : super(key: key);
+  @override
+  _ProjectPagePortfolioTabState createState() =>
+      _ProjectPagePortfolioTabState();
+}
+
+class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
+  HeroController _heroController;
+  @override
+  void initState() {
+    super.initState();
+    _heroController = HeroController(createRectTween: _createRectTween);
+  }
+
+  RectTween _createRectTween(Rect begin, Rect end) {
+    return MaterialRectArcTween(begin: begin, end: end);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO fazer pagina de detalhes (possivelmente com navegador extra)
-    return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-      child: GridView.builder(
-        padding: EdgeInsets.zero,
-        physics: const BouncingScrollPhysics(),
-        itemCount: projetos.length,
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 163 / 110,
-          crossAxisSpacing: 10,
-        ),
-        itemBuilder: (ctx, idx) {
-          return ProjectPageProjetoCard(
-            projeto: projetos[idx],
-            onTap: (Projeto _projeto) {},
-          );
+    return ConstrainedBox(
+      constraints: BoxConstraints.tightForFinite(
+          height: (MediaQuery.of(context).size.height -
+                      262 -
+                      MediaQuery.of(context).padding.bottom -
+                      MediaQuery.of(context).padding.top -
+                      60)
+                  .isNegative
+              ? MediaQuery.of(context).size.height
+              : (MediaQuery.of(context).size.height -
+                  262 -
+                  MediaQuery.of(context).padding.bottom -
+                  MediaQuery.of(context).padding.top -
+                  60)),
+      child: Navigator(
+        observers: [_heroController],
+        onGenerateInitialRoutes: (NavigatorState state, String text) {
+          return [
+            MaterialPageRoute(
+              builder: (context) => ProjectPageProjectsListing(
+                projetos: widget.projetos,
+              ),
+            )
+          ];
         },
       ),
     );

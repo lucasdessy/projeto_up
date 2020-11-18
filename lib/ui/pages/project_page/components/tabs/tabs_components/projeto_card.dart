@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:projeto_up/models/projeto.dart';
+import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projeto_details_page.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_text.dart';
 
 class ProjectPageProjetoCard extends StatelessWidget {
   final Projeto projeto;
-  final Function(Projeto) onTap;
-  const ProjectPageProjetoCard(
-      {Key key, @required this.onTap, @required this.projeto})
+  const ProjectPageProjetoCard({Key key, @required this.projeto})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,22 +24,25 @@ class ProjectPageProjetoCard extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: double.infinity,
-                child: Image.network(
-                  projeto.capaUrl,
-                  height: 110,
-                  fit: BoxFit.cover,
-                  errorBuilder: (ctx, obj, stack) {
-                    return Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                    ); // Gera quando nao consegue carregar a imagem
-                  },
-                  loadingBuilder: (ctx, wdg, evt) {
-                    if (evt == null) return wdg;
-                    return Center(
-                        child:
-                            CupertinoActivityIndicator()); // Gera quando esta carregando a imagem
-                  },
+                child: Hero(
+                  tag: projeto.id,
+                  child: Image.network(
+                    projeto.capaUrl,
+                    height: 110,
+                    fit: BoxFit.cover,
+                    errorBuilder: (ctx, obj, stack) {
+                      return Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                      ); // Gera quando nao consegue carregar a imagem
+                    },
+                    loadingBuilder: (ctx, wdg, evt) {
+                      if (evt == null) return wdg;
+                      return Center(
+                          child:
+                              CupertinoActivityIndicator()); // Gera quando esta carregando a imagem
+                    },
+                  ),
                 ),
               ),
               Container(
@@ -114,7 +116,15 @@ class ProjectPageProjetoCard extends StatelessWidget {
                     height: double.infinity,
                     width: double.infinity,
                     child: InkWell(
-                      onTap: () => onTap(projeto),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ProjectPageProjetoDetailsPage(
+                              projeto: projeto,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
