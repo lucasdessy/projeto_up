@@ -12,8 +12,10 @@ import 'package:projeto_up/utils/up_colors.dart';
 
 class ProjectPageView extends StatefulWidget {
   final ProjectPageController controller;
-
-  const ProjectPageView({Key key, @required this.controller}) : super(key: key);
+  const ProjectPageView({
+    Key key,
+    @required this.controller,
+  }) : super(key: key);
 
   @override
   _ProjectPageViewState createState() => _ProjectPageViewState();
@@ -54,6 +56,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
       backgroundColor: UpColors.wireframe_white,
       body: Obx(
         () => SafeArea(
+          bottom: false,
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
@@ -82,7 +85,8 @@ class _ProjectPageViewState extends State<ProjectPageView>
                 ),
                 SliverToBoxAdapter(
                   child: ListView(
-                      padding: EdgeInsets.only(bottom: 15),
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).padding.bottom + 15),
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: [
