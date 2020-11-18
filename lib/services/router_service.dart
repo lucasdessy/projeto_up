@@ -24,16 +24,20 @@ class RouterService {
     GetPage(
       name: SIMPLE_SPLASH,
       page: () => SimpleSplashPageView(),
+      transition: Transition.fade,
     ),
     GetPage(
       name: SPLASH,
       page: () => SplashPageView(),
+      transition: Transition.fade,
     ),
     GetPage(
-      name: HOME,
-      page: () => HomePageView(),
-      binding: HomePageBindings(),
-    ),
+        name: HOME,
+        page: () => HomePageView(),
+        binding: HomePageBindings(),
+        transition: Transition.downToUp,
+        curve: Curves.easeOut,
+        transitionDuration: Duration(milliseconds: 650)),
     GetPage(
       name: PROJECTS_1 + ":startupId",
       page: () => ProjectPageTab1(),
