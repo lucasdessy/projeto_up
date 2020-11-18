@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/ui/components/up_header.dart';
-import 'package:projeto_up/ui/pages/project_page/components/at_a_glance_card.dart';
+import 'package:projeto_up/ui/pages/project_page/components/header.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/contato_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/home_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/portfolio_tab.dart';
@@ -12,6 +12,7 @@ import 'package:projeto_up/utils/up_colors.dart';
 
 class ProjectPageView extends StatefulWidget {
   final ProjectPageController controller;
+
   const ProjectPageView({
     Key key,
     @required this.controller,
@@ -41,7 +42,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
 
   Color getColor(int index) {
     final Color activeColor = Color.fromARGB(255, 54, 1, 168);
-    final Color inactiveColor = Color.fromARGB(255, 255, 255, 255);
+    final Color inactiveColor = Color.fromARGB(0, 255, 255, 255);
     if (index == currentIndex) return activeColor;
     return inactiveColor;
   }
@@ -72,10 +73,10 @@ class _ProjectPageViewState extends State<ProjectPageView>
               else ...[
                 SliverPersistentHeader(
                   delegate: ProjectPageSliverHeaderDelegate(
-                    child: ProjectPageAtAGlanceCard(
-                      startup: widget.controller.startup,
+                    child: ProjectPageHeader(
                       animateTo: animateTo,
                       getColor: getColor,
+                      startup: widget.controller.startup,
                     ),
                     maxSize: 262,
                     minSize: 262,

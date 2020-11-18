@@ -105,4 +105,14 @@ class UpText {
     color: Color.fromARGB(255, 85, 85, 85),
     decoration: TextDecoration.underline,
   );
+  static const ProjectDetailsTitle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 0, 0, 0),
+  );
+  static const ProjectDetailsDesc = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 85, 85, 85),
+  );
 }

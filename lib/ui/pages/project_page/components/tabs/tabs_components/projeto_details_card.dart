@@ -2,15 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:projeto_up/models/projeto.dart';
-import 'package:projeto_up/ui/components/customTransition.dart';
-import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projeto_details_page.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_text.dart';
 
-class ProjectPageProjetoCard extends StatelessWidget {
+class ProjectPageProjetoDetailsCard extends StatelessWidget {
   final Projeto projeto;
 
-  const ProjectPageProjetoCard({Key key, @required this.projeto})
+  const ProjectPageProjetoDetailsCard({Key key, @required this.projeto})
       : super(key: key);
 
   @override
@@ -18,8 +16,8 @@ class ProjectPageProjetoCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10),
       child: SizedBox(
-        height: 110,
-        width: 163,
+        height: 153,
+        width: 335,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: Stack(
@@ -66,33 +64,11 @@ class ProjectPageProjetoCard extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                    margin: EdgeInsets.only(left: 11, bottom: 15),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Hero(
-                          tag: "${projeto.id}-title",
-                          child: Text(
-                            projeto.nomeProjeto,
-                            style: UpText.SearchCardTitle,
-                          ),
-                        ),
-                        Text(
-                          "Projeto",
-                          style: UpText.SearchCardSubtitle,
-                        )
-                      ],
-                    )),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.topRight,
                 child: Hero(
                   tag: "${projeto.id}-viewCount",
                   child: Container(
-                    margin: EdgeInsets.only(right: 11, bottom: 15),
+                    margin: EdgeInsets.only(right: 11, top: 15),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -115,29 +91,6 @@ class ProjectPageProjetoCard extends StatelessWidget {
                           height: 18,
                         )
                       ],
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Material(
-                  type: MaterialType.transparency,
-                  elevation: 0,
-                  child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          SlideUpRoute(
-                            page: ProjectPageProjetoDetailsPage(
-                              projeto: projeto,
-                            ),
-                          ),
-                        );
-                      },
                     ),
                   ),
                 ),

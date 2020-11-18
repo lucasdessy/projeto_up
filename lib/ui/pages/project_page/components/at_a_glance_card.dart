@@ -7,28 +7,19 @@ import 'package:projeto_up/utils/up_text.dart';
 
 class ProjectPageAtAGlanceCard extends StatelessWidget {
   final Startup startup;
-  final Color Function(int) getColor;
-  final void Function(int) animateTo;
 
-  const ProjectPageAtAGlanceCard(
-      {Key key,
-      @required this.startup,
-      @required this.getColor,
-      @required this.animateTo})
-      : super(key: key);
+  const ProjectPageAtAGlanceCard({
+    Key key,
+    @required this.startup,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      height: 262,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      height: 208.5,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            width: 2,
-            color: Color.fromARGB(255, 229, 229, 229),
-          ),
-        ),
+        color: UpColors.wireframe_white,
       ),
       child: Stack(
         children: [
@@ -58,7 +49,7 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 60,
+            top: 164,
             left: 125,
             child: Container(
               height: 38,
@@ -107,80 +98,6 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
                       ),
                     ],
                   )
-                ],
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 33.5,
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 53),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () => animateTo(0),
-                    child: SizedBox(
-                      width: 16.66,
-                      height: 33.5,
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/svg/align-left.svg',
-                            height: 20,
-                          ),
-                          SvgPicture.asset(
-                            'assets/svg/dot.svg',
-                            height: 4,
-                            color: getColor(0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => animateTo(1),
-                    child: SizedBox(
-                      width: 16.66,
-                      height: 33.5,
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/svg/book-open.svg',
-                            height: 20,
-                          ),
-                          SvgPicture.asset(
-                            'assets/svg/dot.svg',
-                            height: 4,
-                            color: getColor(1),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => animateTo(2),
-                    child: SizedBox(
-                      width: 16.66,
-                      height: 33.5,
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/svg/phone.svg',
-                            height: 20,
-                          ),
-                          SvgPicture.asset(
-                            'assets/svg/dot.svg',
-                            height: 4,
-                            color: getColor(2),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

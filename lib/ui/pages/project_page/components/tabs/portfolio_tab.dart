@@ -23,7 +23,7 @@ class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
   }
 
   RectTween _createRectTween(Rect begin, Rect end) {
-    return MaterialRectArcTween(begin: begin, end: end);
+    return MaterialRectCenterArcTween(begin: begin, end: end);
   }
 
   @override
