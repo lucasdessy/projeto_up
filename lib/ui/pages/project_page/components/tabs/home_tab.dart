@@ -56,7 +56,7 @@ class ProjectPageHomeTab extends StatelessWidget {
                   physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics()),
                   scrollDirection: Axis.horizontal,
-                  itemCount: startup.membros.length,
+                  itemCount: startup?.membros?.length ?? 0,
                   itemBuilder: (ctx, idx) {
                     Membro _membro = startup.membros[idx];
                     return ProjectPageMembroCard(membro: _membro);
@@ -79,7 +79,7 @@ class ProjectPageHomeTab extends StatelessWidget {
                   physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics()),
                   scrollDirection: Axis.horizontal,
-                  itemCount: startup.album.length,
+                  itemCount: startup?.album?.length ?? 0,
                   itemBuilder: (ctx, idx) {
                     String _fotoUrl = startup.album[idx];
                     return ProjectPageFotoCard(

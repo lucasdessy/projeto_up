@@ -22,6 +22,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
     with SingleTickerProviderStateMixin {
   TabController controller;
   int currentIndex = 0;
+
   @override
   void initState() {
     controller = TabController(length: 3, vsync: this);
@@ -91,8 +92,12 @@ class _ProjectPageViewState extends State<ProjectPageView>
                 ProjectPageHomeTab(
                   startup: widget.controller.startup,
                 ),
-                ProjectPagePortfolioTab(),
-                ProjectPageContatoTab(),
+                ProjectPagePortfolioTab(
+                  projetos: widget.controller.projects,
+                ),
+                ProjectPageContatoTab(
+                  startup: widget.controller.startup,
+                ),
               ]
             ],
           ),

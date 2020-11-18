@@ -37,7 +37,8 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey[100],
               image: DecorationImage(
-                  image: NetworkImage(startup.capaUrl), fit: BoxFit.cover),
+                  image: NetworkImage(startup.capaUrl ?? ""),
+                  fit: BoxFit.cover),
             ),
           ),
           Positioned(
@@ -49,7 +50,8 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: UpColors.wireframe_white,
                   image: DecorationImage(
-                      image: NetworkImage(startup.capaUrl), fit: BoxFit.cover),
+                      image: NetworkImage(startup.capaUrl ?? ""),
+                      fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(50),
                   border:
                       Border.all(color: UpColors.wireframe_white, width: 3)),
@@ -69,11 +71,11 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        startup.nome,
+                        "${startup.nome}",
                         style: UpText.StartupProjectCardName,
                       ),
                       Text(
-                        startup.segmento,
+                        "${startup.segmento}",
                         style: UpText.StartupProjectCardSubtitle,
                       ),
                     ],
