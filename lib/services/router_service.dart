@@ -16,6 +16,10 @@ import 'package:projeto_up/ui/pages/project_page/project_page_tab1.dart';
 import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
 import 'package:projeto_up/ui/pages/simple_splash_page/simple_splash_page_view.dart';
 import 'package:projeto_up/ui/pages/splash_page/splash_page_view.dart';
+import 'package:projeto_up/ui/pages/startup_creation_pages/add_photo_page/add_photo_page_bloc.dart';
+import 'package:projeto_up/ui/pages/startup_creation_pages/add_photo_page/add_photo_page_view.dart';
+import 'package:projeto_up/ui/pages/startup_creation_pages/welcome_page/welcome_page_bloc.dart';
+import 'package:projeto_up/ui/pages/startup_creation_pages/welcome_page/welcome_page_view.dart';
 
 class RouterService {
   // Paginas novas serao adicionadas aqui,
@@ -25,6 +29,8 @@ class RouterService {
   static const String HOME = '/';
   static const String LOG_IN = '/log-in';
   static const String SIGN_UP = '/sign-up';
+  static const String WELCOME = '/welcome';
+  static const String ADD_PHOTO = '/welcome/add-photo';
 
   final List<GetPage> pages = [
     GetPage(
@@ -61,6 +67,16 @@ class RouterService {
       name: SIGN_UP,
       page: () => SignUpPageView(),
       binding: SignUpPageBindings(),
+    ),
+    GetPage(
+      name: WELCOME,
+      page: () => WelcomePageView(),
+      binding: WelcomePageBindings(),
+    ),
+    GetPage(
+      name: ADD_PHOTO,
+      page: () => AddPhotoPageView(),
+      binding: AddPhotoPageBindings(),
     ),
   ];
 

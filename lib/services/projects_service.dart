@@ -1,3 +1,4 @@
+// Essa classe ira carregar e armazenar os projetos temporariamente.
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/models/projeto.dart';

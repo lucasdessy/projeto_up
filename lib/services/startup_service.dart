@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:projeto_up/models/startup.dart';
 
 class StartupService extends GetxService {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const colName = "startups";
-  RxBool loading = false.obs;
+  final RxBool loading = false.obs;
   Map<String, List<Startup>> startups = Map<String, List<Startup>>();
   List<Startup> startupsList = List<Startup>();
   @override

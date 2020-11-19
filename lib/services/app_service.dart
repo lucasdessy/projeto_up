@@ -89,7 +89,9 @@ class AppService extends GetxService {
       Duration(seconds: UpConfig.SPLASH_TIME),
     );
     Get.offAllNamed(RouterService.HOME);
-
+    final UserService us = Get.find();
+    us.loadUser(); // Dispara o trigger daqui pois direto da stream do auth, dispara
+    // prematuro, e daqui não acontece isso
     super.onReady();
   }
 }
