@@ -70,9 +70,18 @@ class AppService extends GetxService {
           ExactAssetPicture(
               SvgPicture.svgStringDecoder, 'assets/svg/linha.svg'),
           null),
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/lock.svg'),
+          null),
+      precachePicture(
+          ExactAssetPicture(SvgPicture.svgStringDecoder, 'assets/svg/mail.svg'),
+          null),
       precacheImage(AssetImage('assets/png/foguete.png'), Get.context),
       precacheImage(AssetImage('assets/png/stars.png'), Get.context),
       precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context),
+      precacheImage(AssetImage('assets/png/f-button.png'), Get.context),
+      precacheImage(AssetImage('assets/png/g-button.png'), Get.context),
+      precacheImage(AssetImage('assets/png/start.png'), Get.context),
     ]);
     Get.offAllNamed(RouterService.SPLASH);
 
