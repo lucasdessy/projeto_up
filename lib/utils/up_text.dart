@@ -147,4 +147,9 @@ class UpText {
     color: Color.fromARGB(255, 102, 102, 102),
     decoration: TextDecoration.underline,
   );
+  static const WelcomeSubtitleText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 85, 85, 85),
+  );
 }
