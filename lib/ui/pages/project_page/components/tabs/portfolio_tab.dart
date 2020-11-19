@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_up/models/projeto.dart';
+import 'package:projeto_up/ui/components/slide_up_route.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projects_listing.dart';
 
 class ProjectPagePortfolioTab extends StatefulWidget {
   final List<Projeto> projetos;
+
   ProjectPagePortfolioTab({
     Key key,
     @required this.projetos,
@@ -16,6 +18,7 @@ class ProjectPagePortfolioTab extends StatefulWidget {
 
 class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
   HeroController _heroController;
+
   @override
   void initState() {
     super.initState();
@@ -30,24 +33,16 @@ class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints.tightForFinite(
-          height: (MediaQuery.of(context).size.height -
-                      262 -
-                      MediaQuery.of(context).padding.bottom -
-                      MediaQuery.of(context).padding.top -
-                      60)
-                  .isNegative
-              ? MediaQuery.of(context).size.height
-              : (MediaQuery.of(context).size.height -
-                  262 -
-                  MediaQuery.of(context).padding.bottom -
-                  MediaQuery.of(context).padding.top -
-                  60)),
+        height: (MediaQuery.of(context).size.height - 262 - 60).isNegative
+            ? MediaQuery.of(context).size.height
+            : (MediaQuery.of(context).size.height - 262 - 60),
+      ),
       child: Navigator(
         observers: [_heroController],
         onGenerateInitialRoutes: (NavigatorState state, String text) {
           return [
-            MaterialPageRoute(
-              builder: (context) => ProjectPageProjectsListing(
+            SlideUpRoute(
+              page: ProjectPageProjectsListing(
                 projetos: widget.projetos,
               ),
             )

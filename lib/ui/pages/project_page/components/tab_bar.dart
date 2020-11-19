@@ -34,7 +34,7 @@ class ProjectPageTabBar extends StatelessWidget {
           GestureDetector(
             onTap: () => animateTo(0),
             child: Container(
-              width: 107,
+              width: 106,
               height: 33.5,
               padding: EdgeInsets.symmetric(horizontal: 45),
               child: Column(
@@ -55,7 +55,7 @@ class ProjectPageTabBar extends StatelessWidget {
           GestureDetector(
             onTap: () => animateTo(1),
             child: Container(
-              width: 107,
+              width: 106,
               height: 33.5,
               padding: EdgeInsets.symmetric(horizontal: 45),
               child: Column(
@@ -76,7 +76,7 @@ class ProjectPageTabBar extends StatelessWidget {
           GestureDetector(
             onTap: () => animateTo(2),
             child: Container(
-              width: 107,
+              width: 106,
               height: 33.5,
               padding: EdgeInsets.symmetric(horizontal: 45),
               child: Column(

@@ -115,4 +115,36 @@ class UpText {
     fontWeight: FontWeight.w400,
     color: Color.fromARGB(255, 85, 85, 85),
   );
+  static const NotLoggedTitle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 51, 51, 51),
+  );
+  static const UpButtonText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 255, 255, 255),
+  );
+  static const LogInWithText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 102, 102, 102),
+  );
+  static const InputTopText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 119, 119, 119),
+  );
+  static const ForgotPasswordText = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 155, 144, 177),
+    decoration: TextDecoration.underline,
+  );
+  static const SignUpText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color.fromARGB(255, 102, 102, 102),
+    decoration: TextDecoration.underline,
+  );
 }

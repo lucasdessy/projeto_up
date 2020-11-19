@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:projeto_up/services/router_service.dart';
+import 'package:projeto_up/ui/components/custom_box_shadow.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 
@@ -34,31 +35,42 @@ class HomePageView extends GetView<HomePageController> {
             index: controller.activeIndex(),
           ),
           extendBody: true,
-          bottomNavigationBar: CupertinoTabBar(
-            //TODO fazer navbar fiel ao projeto
-            border: Border.all(width: 0, color: Colors.transparent),
-            backgroundColor: UpColors.wireframe_white.withAlpha(100),
-            onTap: controller.handleNavBarTap,
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/home.svg',
-                  color: controller.getColor(0),
+          bottomNavigationBar: DecoratedBox(
+            decoration: BoxDecoration(
+              boxShadow: [
+                CustomBoxShadow(
+                    color: Colors.black,
+                    offset: Offset(5.0, 5.0),
+                    blurRadius: 5.0,
+                    blurStyle: BlurStyle.outer),
+              ],
+            ),
+            child: CupertinoTabBar(
+              //TODO fazer navbar fiel ao projeto
+              border: Border.all(width: 0, color: Colors.transparent),
+              backgroundColor: UpColors.wireframe_white.withAlpha(100),
+              onTap: controller.handleNavBarTap,
+              items: [
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg/home.svg',
+                    color: controller.getColor(0),
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/search.svg',
-                  color: controller.getColor(1),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg/search.svg',
+                    color: controller.getColor(1),
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/svg/more-horizontal.svg',
-                  color: controller.getColor(2),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    'assets/svg/more-horizontal.svg',
+                    color: controller.getColor(2),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

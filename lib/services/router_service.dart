@@ -4,6 +4,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:projeto_up/ui/pages/authentication_pages/log_in_page/log_in_page_bloc.dart';
+import 'package:projeto_up/ui/pages/authentication_pages/log_in_page/log_in_page_view.dart';
+import 'package:projeto_up/ui/pages/authentication_pages/sign_up_page/sign_up_page_bloc.dart';
+import 'package:projeto_up/ui/pages/authentication_pages/sign_up_page/sign_up_page_view.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_view.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
@@ -19,6 +23,8 @@ class RouterService {
   static const String SIMPLE_SPLASH = '/simple-splash';
   static const String SPLASH = '/splash';
   static const String HOME = '/';
+  static const String LOG_IN = '/log-in';
+  static const String SIGN_UP = '/sign-up';
 
   final List<GetPage> pages = [
     GetPage(
@@ -46,6 +52,16 @@ class RouterService {
       name: PROJECTS_2 + ":startupId",
       page: () => ProjectPageTab1(),
     ), //URL Dinamica para ser tratada no nested navigator
+    GetPage(
+      name: LOG_IN,
+      page: () => LogInPageView(),
+      binding: LogInPageBindings(),
+    ),
+    GetPage(
+      name: SIGN_UP,
+      page: () => SignUpPageView(),
+      binding: SignUpPageBindings(),
+    ),
   ];
 
   //Usado pelo nested navigator

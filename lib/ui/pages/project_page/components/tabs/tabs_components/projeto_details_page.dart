@@ -18,42 +18,45 @@ class ProjectPageProjetoDetailsPage extends StatelessWidget {
       backgroundColor: UpColors.wireframe_white,
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-              icon: Icon(Icons.chevron_left),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            Center(
-              child: ProjectPageProjetoDetailsCard(projeto: projeto),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Hero(
-              tag: "${projeto.id}-title",
-              child: Container(
-                width: double.infinity,
-                child: Text(
-                  projeto.nomeProjeto,
-                  style: UpText.ProjectDetailsTitle,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                icon: Icon(Icons.chevron_left),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              Center(
+                child: ProjectPageProjetoDetailsCard(projeto: projeto),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Hero(
+                tag: "${projeto.id}-title",
+                child: Container(
+                  width: double.infinity,
+                  child: Text(
+                    projeto.nomeProjeto,
+                    style: UpText.ProjectDetailsTitle,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Container(
-              width: double.infinity,
-              child: Text(
-                projeto.descricao,
-                style: UpText.ProjectDetailsDesc,
+              SizedBox(
+                height: 12,
               ),
-            ),
-          ],
+              Container(
+                width: double.infinity,
+                child: Text(
+                  projeto.descricao,
+                  style: UpText.ProjectDetailsDesc,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

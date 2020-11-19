@@ -4,8 +4,10 @@ import 'package:projeto_up/models/projeto.dart';
 import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/services/projects_service.dart';
 import 'package:projeto_up/services/startup_service.dart';
+import 'package:projeto_up/services/user_service.dart';
 
 class ProjectPageController extends GetxController {
+  final UserService userService = Get.find();
   final StartupService startupService = Get.find();
   final ProjectsService projectsService = Get.find();
   Startup startup = Startup();

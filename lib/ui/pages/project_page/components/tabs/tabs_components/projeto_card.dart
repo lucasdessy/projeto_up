@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:projeto_up/models/projeto.dart';
-import 'package:projeto_up/ui/components/customTransition.dart';
+import 'package:projeto_up/ui/components/slide_up_route.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projeto_details_page.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_text.dart';
