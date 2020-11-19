@@ -15,6 +15,10 @@ class ProjectPageController extends GetxController {
   String startupId = Get.parameters["startupId"];
   List<Projeto> projects = List<Projeto>();
 
+  bool get canDisplay {
+    return (userService.isLoggedIn && userService.hasCompany);
+  }
+
   @override
   void onInit() {
     super.onInit();

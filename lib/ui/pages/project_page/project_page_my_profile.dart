@@ -8,7 +8,7 @@ class ProjectPageMyProfile extends StatelessWidget {
   final ProjectPageController controller = Get.find(tag: "myProfile");
   @override
   Widget build(BuildContext context) {
-    return Obx(() => controller.userService.isLoggedIn
+    return Obx(() => controller.canDisplay
         ? ProjectPageView(
             controller: controller,
           )
