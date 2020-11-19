@@ -8,6 +8,9 @@ class UpLabeledTextField extends StatelessWidget {
   final Widget icon;
   final String topLabel;
   final bool obscureText;
+  final String Function(String) validator;
+  final int maxLines;
+
   const UpLabeledTextField({
     Key key,
     @required this.controller,
@@ -15,6 +18,8 @@ class UpLabeledTextField extends StatelessWidget {
     this.icon,
     @required this.topLabel,
     this.obscureText,
+    this.validator,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -35,6 +40,8 @@ class UpLabeledTextField extends StatelessWidget {
           hintText: hintText,
           icon: icon,
           obscureText: obscureText,
+          validator: validator,
+          maxLines: maxLines,
         ),
       ],
     );
