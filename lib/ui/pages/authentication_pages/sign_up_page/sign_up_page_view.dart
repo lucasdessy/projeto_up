@@ -16,43 +16,52 @@ class SignUpPageView extends GetView<SignUpPageController> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: double.infinity,
-                child: SvgPicture.asset(
-                  'assets/svg/up!.svg',
-                  height: 50,
-                  alignment: Alignment.center,
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: SvgPicture.asset(
+                    'assets/svg/up!.svg',
+                    height: 50,
+                    alignment: Alignment.center,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 117,
-              ),
-              UpLabeledTextField(
-                controller: controller.emailController,
-                topLabel: "Email",
-                icon: SvgPicture.asset('assets/svg/mail.svg'),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              UpLabeledTextField(
-                controller: controller.passController,
-                topLabel: "Senha",
-                icon: SvgPicture.asset('assets/svg/lock.svg'),
-                obscureText: true,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              UpButton(
-                text: "Confirmar",
-                onTap: controller.handleSignUp,
-              ),
-            ],
+                SizedBox(
+                  height: 117,
+                ),
+                UpLabeledTextField(
+                  controller: controller.emailController,
+                  topLabel: "Email",
+                  icon: SvgPicture.asset('assets/svg/mail.svg'),
+                  validator: (_text) => GetUtils.isEmail(_text.trim())
+                      ? null
+                      : "Insira um email válido",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                UpLabeledTextField(
+                  controller: controller.passController,
+                  topLabel: "Senha",
+                  icon: SvgPicture.asset('assets/svg/lock.svg'),
+                  obscureText: true,
+                  validator: (_text) => _text.length >= 6
+                      ? null
+                      : "Sua senha precisa ter mais de 6 caracteres",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                UpButton(
+                  text: "Confirmar",
+                  onTap: controller.handleSignUp,
+                ),
+              ],
+            ),
           ),
         ),
       ),

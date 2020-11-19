@@ -18,72 +18,82 @@ class LogInPageView extends GetView<LogInPageController> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                child: SvgPicture.asset(
-                  'assets/svg/up!.svg',
-                  height: 50,
-                  alignment: Alignment.center,
-                ),
-              ),
-              LogInPageSignInWithCard(
-                faceSignIn: controller.handleFacebookSignIn,
-                googleSignIn: controller.handleGoogleSignIn,
-              ),
-              UpLabeledTextField(
-                controller: controller.emailController,
-                topLabel: "Email",
-                icon: SvgPicture.asset('assets/svg/mail.svg'),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              UpLabeledTextField(
-                controller: controller.passController,
-                topLabel: "Senha",
-                icon: SvgPicture.asset('assets/svg/lock.svg'),
-                obscureText: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: controller.handleForgotPassword,
-                child: Container(
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
                   width: double.infinity,
-                  child: Text(
-                    "esqueceu a senha?",
-                    textAlign: TextAlign.end,
-                    style: UpText.ForgotPasswordText,
+                  child: SvgPicture.asset(
+                    'assets/svg/up!.svg',
+                    height: 50,
+                    alignment: Alignment.center,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              UpButton(
-                text: "Entrar",
-                onTap: controller.handleLogIn,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: controller.handleSignUp,
-                child: Container(
-                  width: double.infinity,
-                  child: Text(
-                    "Não possui conta? Cadastrar-se",
-                    textAlign: TextAlign.center,
-                    style: UpText.SignUpText,
+                LogInPageSignInWithCard(
+                  faceSignIn: controller.handleFacebookSignIn,
+                  googleSignIn: controller.handleGoogleSignIn,
+                ),
+                UpLabeledTextField(
+                  controller: controller.emailController,
+                  topLabel: "Email",
+                  icon: SvgPicture.asset('assets/svg/mail.svg'),
+                  validator: (_text) => GetUtils.isEmail(_text.trim())
+                      ? null
+                      : "Insira um email válido",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                UpLabeledTextField(
+                  controller: controller.passController,
+                  topLabel: "Senha",
+                  icon: SvgPicture.asset('assets/svg/lock.svg'),
+                  obscureText: true,
+                  maxLines: 1,
+                  validator: (_text) => _text.length >= 6
+                      ? null
+                      : "Sua senha precisa ter mais de 6 caracteres",
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: controller.handleForgotPassword,
+                  child: Container(
+                    width: double.infinity,
+                    child: Text(
+                      "esqueceu a senha?",
+                      textAlign: TextAlign.end,
+                      style: UpText.ForgotPasswordText,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                ),
+                UpButton(
+                  text: "Entrar",
+                  onTap: controller.handleLogIn,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: controller.handleSignUp,
+                  child: Container(
+                    width: double.infinity,
+                    child: Text(
+                      "Não possui conta? Cadastrar-se",
+                      textAlign: TextAlign.center,
+                      style: UpText.SignUpText,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
