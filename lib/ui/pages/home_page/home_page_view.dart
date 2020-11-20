@@ -48,7 +48,7 @@ class HomePageView extends GetView<HomePageController> {
             child: CupertinoTabBar(
               //TODO fazer navbar fiel ao projeto
               border: Border.all(width: 0, color: Colors.transparent),
-              backgroundColor: UpColors.wireframe_white.withAlpha(100),
+              backgroundColor: UpColors.wireframe_white.withAlpha(170),
               onTap: controller.handleNavBarTap,
               items: [
                 BottomNavigationBarItem(
