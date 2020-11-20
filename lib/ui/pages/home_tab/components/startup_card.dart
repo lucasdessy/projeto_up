@@ -48,9 +48,13 @@ class HomeTabStartupCard extends StatelessWidget {
                     },
                     loadingBuilder: (ctx, wdg, evt) {
                       if (evt == null) return wdg;
-                      return Center(
-                          child:
-                              CupertinoActivityIndicator()); // Gera quando esta carregando a imagem
+                      return Container(
+                        height: 120,
+                        width: 200,
+                        child: Center(
+                          child: CupertinoActivityIndicator(),
+                        ),
+                      ); // Gera quando esta carregando a imagem
                     },
                   ),
                   Container(
@@ -71,7 +75,7 @@ class HomeTabStartupCard extends StatelessWidget {
                               style: UpText.StartupCardTitle,
                             ),
                             Text(
-                              "2020",
+                              "${startup.anoCriado}",
                               style: UpText.StartupCardSubtitle,
                             )
                           ],
@@ -83,7 +87,7 @@ class HomeTabStartupCard extends StatelessWidget {
                               height: 25,
                               child: Center(
                                 child: Text(
-                                  "300",
+                                  "${startup.visualizacoes}",
                                   style: UpText.StartupCardViewCount,
                                 ),
                               ),

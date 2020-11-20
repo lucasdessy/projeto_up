@@ -16,39 +16,42 @@ class HomeTabSegmentoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: 20,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+            ),
+            child: Text(
+              "$segmento",
+              style: UpText.Segment,
+            ),
           ),
-          child: Text(
-            "$segmento",
-            style: UpText.Segment,
+          SizedBox(
+            height: 14,
           ),
-        ),
-        SizedBox(
-          height: 14,
-        ),
-        SizedBox(
-          height: 175,
-          child: ListView.builder(
-              itemCount: startups.length,
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (ctx, idx) {
-                final Startup _startup = startups[idx];
-                return HomeTabStartupCard(
-                  startup: _startup,
-                  onTap: onTap,
-                );
-              }),
-        ),
-      ],
+          SizedBox(
+            height: 175,
+            child: ListView.builder(
+                itemCount: startups.length,
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (ctx, idx) {
+                  final Startup _startup = startups[idx];
+                  return HomeTabStartupCard(
+                    startup: _startup,
+                    onTap: onTap,
+                  );
+                }),
+          ),
+        ],
+      ),
     );
   }
 }
