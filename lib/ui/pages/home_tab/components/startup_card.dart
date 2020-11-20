@@ -41,6 +41,7 @@ class HomeTabStartupCard extends StatelessWidget {
                   Image.network(
                     startup.capaUrl,
                     height: 120,
+                    width: 200,
                     fit: BoxFit.cover,
                     errorBuilder: (ctx, obj, stack) {
                       return Container(); // Gera quando nao consegue carregar a imagem

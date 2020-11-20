@@ -11,6 +11,7 @@ class ProjectPageMyProfile extends StatelessWidget {
     return Obx(() => controller.canDisplay
         ? ProjectPageView(
             controller: controller,
+            isPersonal: true,
           )
         : NotLoggedPageView());
   }

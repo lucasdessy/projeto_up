@@ -6,16 +6,18 @@ import 'package:projeto_up/ui/pages/project_page/components/header.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/contato_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/home_tab.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/portfolio_tab.dart';
-import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/SliverHeaderDelegate.dart';
+import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/sliver_header_delegate.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_bloc.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 
 class ProjectPageView extends StatefulWidget {
   final ProjectPageController controller;
+  final bool isPersonal;
 
   const ProjectPageView({
     Key key,
     @required this.controller,
+    @required this.isPersonal,
   }) : super(key: key);
 
   @override
@@ -63,7 +65,17 @@ class _ProjectPageViewState extends State<ProjectPageView>
               parent: AlwaysScrollableScrollPhysics(),
             ),
             slivers: [
-              UpHeader(),
+              UpHeader(
+                actions: widget.isPersonal
+                    ? [
+                        widget.controller.userService.isLoggedIn
+                            ? IconButton(
+                                icon: Icon(Icons.logout),
+                                onPressed: widget.controller.handleLogout)
+                            : Container()
+                      ]
+                    : [],
+              ),
               if (widget.controller.loading)
                 SliverFillRemaining(
                   child: Center(
@@ -76,7 +88,7 @@ class _ProjectPageViewState extends State<ProjectPageView>
                     child: ProjectPageHeader(
                       animateTo: animateTo,
                       getColor: getColor,
-                      startup: widget.controller.startup,
+                      startup: widget.controller.startup(),
                     ),
                     maxSize: 262,
                     minSize: 262,
@@ -93,13 +105,13 @@ class _ProjectPageViewState extends State<ProjectPageView>
                       children: [
                         [
                           ProjectPageHomeTab(
-                            startup: widget.controller.startup,
+                            startup: widget.controller.startup(),
                           ),
                           ProjectPagePortfolioTab(
                             projetos: widget.controller.projects,
                           ),
                           ProjectPageContatoTab(
-                            startup: widget.controller.startup,
+                            startup: widget.controller.startup(),
                           ),
                         ][currentIndex],
                       ]),

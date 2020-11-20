@@ -32,7 +32,7 @@ class SearchTabController extends GetxController {
   }
 
   bool get loading {
-    return startupService.loading() || projectsService.loading() || _loading();
+    return startupService.loading || projectsService.loading || _loading();
   }
 
   Future<void> handleReload() async {

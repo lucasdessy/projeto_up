@@ -13,7 +13,7 @@ class HomeTabBindings implements Bindings {
 class HomeTabController extends GetxController {
   final StartupService startupService = Get.find();
 
-  RxBool get loading {
+  bool get loading {
     return startupService.loading;
   }
 

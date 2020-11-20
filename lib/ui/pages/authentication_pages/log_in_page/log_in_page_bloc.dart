@@ -18,7 +18,9 @@ class LogInPageController extends GetxController {
 
   void handleFacebookSignIn() {}
 
-  void handleGoogleSignIn() {}
+  void handleGoogleSignIn() {
+    userService.signInWithGoogle();
+  }
 
   void handleForgotPassword() async {
     if (emailController.text.trim().isEmail) {

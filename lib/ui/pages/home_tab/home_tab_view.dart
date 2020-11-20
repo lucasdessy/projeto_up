@@ -32,7 +32,7 @@ class HomeTabView extends GetView<HomeTabController> {
             ),
           ),
           Obx(
-            () => controller.loading()
+            () => controller.loading
                 ? SliverFillRemaining(
                     child: Center(child: CupertinoActivityIndicator()),
                   )

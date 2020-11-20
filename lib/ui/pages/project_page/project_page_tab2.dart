@@ -9,6 +9,7 @@ class ProjectPageTab2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProjectPageView(
       controller: controller,
+      isPersonal: false,
     );
   }
 }
