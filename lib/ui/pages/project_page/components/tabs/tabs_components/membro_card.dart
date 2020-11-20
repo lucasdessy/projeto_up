@@ -14,7 +14,6 @@ class ProjectPageMembroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 185,
-      height: 61,
       padding: EdgeInsets.only(left: 20),
       child: Row(
         children: [
@@ -27,12 +26,13 @@ class ProjectPageMembroCard extends StatelessWidget {
             child: Image.network(
               membro.fotoUrl ?? "",
               height: 51,
+              width: 51,
               fit: BoxFit.cover,
               errorBuilder: (ctx, obj, stack) {
                 return Container(
                   color: Colors.grey,
-                  width: 40,
-                  height: 40,
+                  width: 51,
+                  height: 51,
                 ); // Gera quando nao consegue carregar a imagem
               },
               loadingBuilder: (ctx, wdg, evt) {

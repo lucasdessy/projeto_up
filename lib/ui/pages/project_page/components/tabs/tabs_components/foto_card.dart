@@ -12,19 +12,19 @@ class ProjectPageFotoCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(
-        width: 122,
-        height: 122,
+        width: 120,
+        height: 120,
         margin: EdgeInsets.only(left: 20),
         child: Image.network(
           fotoUrl,
-          height: 122,
-          width: 122,
+          height: 120,
+          width: 120,
           fit: BoxFit.cover,
           errorBuilder: (ctx, obj, stack) {
             return Container(
               color: Colors.grey,
-              width: 122,
-              height: 122,
+              width: 120,
+              height: 120,
             ); // Gera quando nao consegue carregar a imagem
           },
           loadingBuilder: (ctx, wdg, evt) {

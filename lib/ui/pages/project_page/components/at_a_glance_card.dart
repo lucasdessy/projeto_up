@@ -7,19 +7,33 @@ import 'package:projeto_up/utils/up_text.dart';
 
 class ProjectPageAtAGlanceCard extends StatelessWidget {
   final Startup startup;
+  final bool isPersonal;
+  final void Function() handleEditStartup;
 
   const ProjectPageAtAGlanceCard({
     Key key,
     @required this.startup,
+    @required this.isPersonal,
+    @required this.handleEditStartup,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      height: 208.5,
+      height: 218,
       decoration: BoxDecoration(
-        color: UpColors.wireframe_white,
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              UpColors.wireframe_white,
+              UpColors.wireframe_white.withAlpha(170)
+            ],
+            stops: [
+              0.7,
+              1
+            ]),
       ),
       child: Stack(
         children: [
@@ -35,17 +49,19 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
           Positioned(
             left: 13,
             top: 118,
-            child: Container(
+            child: SizedBox(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
-                  color: UpColors.wireframe_white,
-                  image: DecorationImage(
-                      image: NetworkImage(startup.capaUrl ?? ""),
-                      fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(50),
-                  border:
-                      Border.all(color: UpColors.wireframe_white, width: 3)),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: UpColors.wireframe_white,
+                    image: DecorationImage(
+                        image: NetworkImage(startup.capaUrl ?? ""),
+                        fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(50),
+                    border:
+                        Border.all(color: UpColors.wireframe_white, width: 3)),
+              ),
             ),
           ),
           Positioned(
@@ -56,10 +72,11 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
               width: 185,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "${startup.nome}",
@@ -102,6 +119,20 @@ class ProjectPageAtAGlanceCard extends StatelessWidget {
               ),
             ),
           ),
+          isPersonal
+              ? Positioned(
+                  child: GestureDetector(
+                    onTap: handleEditStartup,
+                    child: SvgPicture.asset(
+                      'assets/svg/edit.svg',
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
+                  top: 10,
+                  right: 10,
+                )
+              : Container(),
         ],
       ),
     );

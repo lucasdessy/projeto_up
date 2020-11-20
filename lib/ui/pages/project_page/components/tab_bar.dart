@@ -19,7 +19,7 @@ class ProjectPageTabBar extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: UpColors.wireframe_white.withAlpha(100),
+        color: UpColors.wireframe_white.withAlpha(170),
         border: Border(
           bottom: BorderSide(
             width: 2,
@@ -27,74 +27,77 @@ class ProjectPageTabBar extends StatelessWidget {
           ),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          GestureDetector(
-            onTap: () => animateTo(0),
-            child: Container(
-              width: 106,
-              height: 33.5,
-              padding: EdgeInsets.symmetric(horizontal: 45),
-              child: Column(
-                children: [
-                  SvgPicture.asset(
-                    'assets/svg/align-left.svg',
-                    height: 20,
-                  ),
-                  SvgPicture.asset(
-                    'assets/svg/dot.svg',
-                    height: 4,
-                    color: getColor(0),
-                  ),
-                ],
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            GestureDetector(
+              onTap: () => animateTo(0),
+              child: Container(
+                width: 106,
+                height: 33.5,
+                padding: EdgeInsets.symmetric(horizontal: 45),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/svg/align-left.svg',
+                      height: 20,
+                    ),
+                    SvgPicture.asset(
+                      'assets/svg/dot.svg',
+                      height: 4,
+                      color: getColor(0),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () => animateTo(1),
-            child: Container(
-              width: 106,
-              height: 33.5,
-              padding: EdgeInsets.symmetric(horizontal: 45),
-              child: Column(
-                children: [
-                  SvgPicture.asset(
-                    'assets/svg/book-open.svg',
-                    height: 20,
-                  ),
-                  SvgPicture.asset(
-                    'assets/svg/dot.svg',
-                    height: 4,
-                    color: getColor(1),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () => animateTo(1),
+              child: Container(
+                width: 106,
+                height: 33.5,
+                padding: EdgeInsets.symmetric(horizontal: 45),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/svg/book-open.svg',
+                      height: 20,
+                    ),
+                    SvgPicture.asset(
+                      'assets/svg/dot.svg',
+                      height: 4,
+                      color: getColor(1),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () => animateTo(2),
-            child: Container(
-              width: 106,
-              height: 33.5,
-              padding: EdgeInsets.symmetric(horizontal: 45),
-              child: Column(
-                children: [
-                  SvgPicture.asset(
-                    'assets/svg/phone.svg',
-                    height: 20,
-                  ),
-                  SvgPicture.asset(
-                    'assets/svg/dot.svg',
-                    height: 4,
-                    color: getColor(2),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () => animateTo(2),
+              child: Container(
+                width: 106,
+                height: 33.5,
+                padding: EdgeInsets.symmetric(horizontal: 45),
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/svg/phone.svg',
+                      height: 20,
+                    ),
+                    SvgPicture.asset(
+                      'assets/svg/dot.svg',
+                      height: 4,
+                      color: getColor(2),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

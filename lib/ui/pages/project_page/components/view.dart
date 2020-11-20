@@ -89,9 +89,11 @@ class _ProjectPageViewState extends State<ProjectPageView>
                       animateTo: animateTo,
                       getColor: getColor,
                       startup: widget.controller.startup(),
+                      isPersonal: widget.isPersonal,
+                      handleEditStartup: widget.controller.handleEditStartup,
                     ),
-                    maxSize: 262,
-                    minSize: 262,
+                    maxSize: 275.5,
+                    minSize: 275.5,
                   ),
                   pinned: true,
                   // floating: true,
@@ -106,12 +108,22 @@ class _ProjectPageViewState extends State<ProjectPageView>
                         [
                           ProjectPageHomeTab(
                             startup: widget.controller.startup(),
+                            isPersonal: widget.isPersonal,
+                            handleAddDesc: widget.controller.handleAddDesc,
+                            handleAddEquipe: widget.controller.handleAddEquipe,
+                            handleAddImage: widget.controller.handleAddImage,
                           ),
                           ProjectPagePortfolioTab(
                             projetos: widget.controller.projects,
+                            isPersonal: widget.isPersonal,
+                            handleAddProject:
+                                widget.controller.handleAddProject,
                           ),
                           ProjectPageContatoTab(
                             startup: widget.controller.startup(),
+                            isPersonal: widget.isPersonal,
+                            handleAddContacts:
+                                widget.controller.handleAddContacts,
                           ),
                         ][currentIndex],
                       ]),

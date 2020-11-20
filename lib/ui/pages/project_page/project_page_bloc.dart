@@ -50,4 +50,16 @@ class ProjectPageController extends GetxController {
       Get.toNamed(RouterService.LOG_IN);
     }
   }
+
+  void handleAddDesc() async {}
+
+  void handleAddImage() async {}
+
+  void handleAddEquipe() async {}
+
+  void handleAddProject() async {}
+
+  void handleAddContacts() async {}
+
+  void handleEditStartup() async {}
 }

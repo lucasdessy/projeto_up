@@ -77,7 +77,7 @@ class ProjectPageProjetoDetailsCard extends StatelessWidget {
                           height: 18,
                           child: Center(
                             child: Text(
-                              "3K",
+                              "${projeto.visualizacoes}",
                               style: UpText.SearchCardViewCount,
                             ),
                           ),
