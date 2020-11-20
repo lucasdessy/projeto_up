@@ -14,4 +14,5 @@ class UpColors {
   static const Color wireframe_regular = Color.fromARGB(255, 163, 163, 163);
   static const Color wireframe_light = Color.fromARGB(255, 181, 181, 181);
   static const Color wireframe_lightest = Color.fromARGB(255, 0, 0, 0);
+  static const Color appbar_icons = Color.fromARGB(255, 85, 85, 85);
 }
