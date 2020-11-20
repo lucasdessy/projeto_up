@@ -25,7 +25,7 @@ class UpTextField extends StatelessWidget {
       style: UpText.SearchFieldActive,
       obscureText: obscureText ?? false,
       validator: validator,
-      maxLines: maxLines,
+      maxLines: maxLines ?? 1,
       scrollPhysics: const ClampingScrollPhysics(),
       decoration: InputDecoration(
         hintText: hintText,

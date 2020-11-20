@@ -41,7 +41,7 @@ class UpLabeledTextField extends StatelessWidget {
           icon: icon,
           obscureText: obscureText,
           validator: validator,
-          maxLines: maxLines,
+          maxLines: maxLines ?? 1,
         ),
       ],
     );
