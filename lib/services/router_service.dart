@@ -8,6 +8,14 @@ import 'package:projeto_up/ui/pages/authentication_pages/log_in_page/log_in_page
 import 'package:projeto_up/ui/pages/authentication_pages/log_in_page/log_in_page_view.dart';
 import 'package:projeto_up/ui/pages/authentication_pages/sign_up_page/sign_up_page_bloc.dart';
 import 'package:projeto_up/ui/pages/authentication_pages/sign_up_page/sign_up_page_view.dart';
+import 'package:projeto_up/ui/pages/edit_pages/contatos_edit_page/contatos_edit_page_bloc.dart';
+import 'package:projeto_up/ui/pages/edit_pages/contatos_edit_page/contatos_edit_page_view.dart';
+import 'package:projeto_up/ui/pages/edit_pages/equipe_edit_page/equipe_edit_page_bloc.dart';
+import 'package:projeto_up/ui/pages/edit_pages/equipe_edit_page/equipe_edit_page_view.dart';
+import 'package:projeto_up/ui/pages/edit_pages/projeto_edit_page/projeto_edit_page_bloc.dart';
+import 'package:projeto_up/ui/pages/edit_pages/projeto_edit_page/projeto_edit_page_view.dart';
+import 'package:projeto_up/ui/pages/edit_pages/startup_edit_page/startup_edit_page_bloc.dart';
+import 'package:projeto_up/ui/pages/edit_pages/startup_edit_page/startup_edit_page_view.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_view.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
@@ -32,6 +40,12 @@ class RouterService {
   static const String SIGN_UP = '/sign-up';
   static const String WELCOME = '/welcome';
   static const String ADD_PHOTO = '/welcome/add-photo';
+
+  // Edit pages
+  static const String EDIT_CONTATOS = '/contatos-edit';
+  static const String EDIT_EQUIPE = '/equipe-edit';
+  static const String EDIT_PROJETO = '/projetos-edit';
+  static const String EDIT_STARTUP = '/startup-edit';
 
   final List<GetPage> pages = [
     GetPage(
@@ -78,6 +92,26 @@ class RouterService {
       name: ADD_PHOTO,
       page: () => AddPhotoPageView(),
       binding: AddPhotoPageBindings(),
+    ),
+    GetPage(
+      name: EDIT_CONTATOS,
+      page: () => ContatosEditPageView(),
+      binding: ContatosEditPageBindings(),
+    ),
+    GetPage(
+      name: EDIT_EQUIPE,
+      page: () => EquipeEditPageView(),
+      binding: EquipeEditPageBindings(),
+    ),
+    GetPage(
+      name: EDIT_PROJETO,
+      page: () => ProjetoEditPageView(),
+      binding: ProjetoEditPageBindings(),
+    ),
+    GetPage(
+      name: EDIT_STARTUP,
+      page: () => StartupEditPageView(),
+      binding: StartupEditPageBindings(),
     ),
   ];
 
