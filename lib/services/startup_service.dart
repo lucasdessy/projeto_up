@@ -10,6 +10,7 @@ class StartupService extends GetxService {
   final RxBool _loading = false.obs;
   Map<String, List<Startup>> startups = Map<String, List<Startup>>();
   List<Startup> startupsList = List<Startup>();
+
   @override
   void onReady() async {
     await _getCompanies();
@@ -61,6 +62,7 @@ class StartupService extends GetxService {
     _setLoading(true);
     DocumentReference ref =
         await _firestore.collection(colName).add(_startup.toJson());
+    await ref.update({"ano_criado": DateTime.now().year, "visualizacoes": 0});
     _setLoading(false);
     return ref.id;
   }

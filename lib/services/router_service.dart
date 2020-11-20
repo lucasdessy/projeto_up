@@ -13,6 +13,7 @@ import 'package:projeto_up/ui/pages/home_page/home_page_view.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_my_profile.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_tab1.dart';
+import 'package:projeto_up/ui/pages/project_page/project_page_tab2.dart';
 import 'package:projeto_up/ui/pages/search_tab/search_tab_view.dart';
 import 'package:projeto_up/ui/pages/simple_splash_page/simple_splash_page_view.dart';
 import 'package:projeto_up/ui/pages/splash_page/splash_page_view.dart';
@@ -56,7 +57,7 @@ class RouterService {
     ), //URL Dinamica para ser tratada no nested navigator
     GetPage(
       name: PROJECTS_2 + ":startupId",
-      page: () => ProjectPageTab1(),
+      page: () => ProjectPageTab2(),
     ), //URL Dinamica para ser tratada no nested navigator
     GetPage(
       name: LOG_IN,
@@ -89,6 +90,7 @@ class RouterService {
 
   // ignore: missing_return
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    print("GOING TO: ${settings.name}");
     //URL estaticas
     switch (settings.name) {
       case HOME_TAB:
