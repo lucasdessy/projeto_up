@@ -18,18 +18,21 @@ class SearchTabSearchResultCard extends StatelessWidget {
     String tipo = "";
     String capaUrl = "";
     String startupId;
+    int views = 0;
     if (startupOrProject is Startup) {
       Startup _tempStartup = startupOrProject;
       nome = _tempStartup.nome;
       tipo = "Startup";
       capaUrl = _tempStartup.capaUrl;
       startupId = _tempStartup.id;
+      views = _tempStartup.visualizacoes;
     } else if (startupOrProject is Projeto) {
       Projeto _tempProjeto = startupOrProject;
       nome = _tempProjeto.nomeProjeto;
       tipo = "Projeto";
       capaUrl = _tempProjeto.capaUrl;
       startupId = _tempProjeto.idStartup;
+      views = _tempProjeto.visualizacoes;
     } else {
       return Container();
     }
@@ -107,7 +110,7 @@ class SearchTabSearchResultCard extends StatelessWidget {
                         height: 18,
                         child: Center(
                           child: Text(
-                            "3K",
+                            "$views",
                             style: UpText.SearchCardViewCount,
                           ),
                         ),

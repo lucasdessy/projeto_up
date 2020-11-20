@@ -11,6 +11,8 @@ class SearchTabListing extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: ListView.builder(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom + 20),
         physics: const ClampingScrollPhysics(),
         shrinkWrap: true,
         itemCount: projectsStartupsList.length,
