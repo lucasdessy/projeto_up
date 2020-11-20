@@ -9,18 +9,19 @@ class ProjectPageFotoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: Container(
-        width: 120,
-        height: 120,
-        margin: EdgeInsets.only(left: 20),
+    return Container(
+      width: 120,
+      height: 120,
+      margin: EdgeInsets.only(left: 20),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
         child: Image.network(
           fotoUrl,
           height: 120,
           width: 120,
           fit: BoxFit.cover,
           errorBuilder: (ctx, obj, stack) {
+            print(stack);
             return Container(
               color: Colors.grey,
               width: 120,
