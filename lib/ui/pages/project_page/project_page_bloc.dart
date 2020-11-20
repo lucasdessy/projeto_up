@@ -51,15 +51,33 @@ class ProjectPageController extends GetxController {
     }
   }
 
-  void handleAddDesc() async {}
+  void handleAddDesc() async {
+    print("handleAddDesc called");
+    Get.toNamed(RouterService.EDIT_STARTUP);
+  }
 
-  void handleAddImage() async {}
+  void handleAddImage() async {
+    print("handleAddImage called");
+    // Não sei ainda
+  }
 
-  void handleAddEquipe() async {}
+  void handleAddEquipe() async {
+    print("handleAddEquipe called");
+    Get.toNamed(RouterService.EDIT_EQUIPE);
+  }
 
-  void handleAddProject() async {}
+  void handleAddProject() async {
+    print("handleAddProject called");
+    Get.toNamed(RouterService.EDIT_PROJETO);
+  }
 
-  void handleAddContacts() async {}
+  void handleAddContacts() async {
+    print("handleAddContacts called");
+    Get.toNamed(RouterService.EDIT_CONTATOS);
+  }
 
-  void handleEditStartup() async {}
+  void handleEditStartup() async {
+    print("handleEditStartup called");
+    Get.toNamed(RouterService.EDIT_STARTUP);
+  }
 }

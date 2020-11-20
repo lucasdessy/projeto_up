@@ -113,7 +113,7 @@ class ProjectPageContatoTab extends StatelessWidget {
               ? Center(
                   child: UpAddButton(
                     text: "Adicionar Contatos",
-                    onTap: () {},
+                    onTap: handleAddContacts,
                   ),
                 )
               : Container()

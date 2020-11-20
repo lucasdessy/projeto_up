@@ -49,7 +49,7 @@ class ProjectPageHomeTab extends StatelessWidget {
                 ),
                 isPersonal
                     ? UpAddButton(
-                        onTap: () {},
+                        onTap: handleAddDesc,
                         text: startup?.descricao == null
                             ? "adicionar descrição"
                             : "editar descrição",
@@ -87,7 +87,7 @@ class ProjectPageHomeTab extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: isPersonal
-                ? UpAddButton(onTap: () {}, text: "adicionar membros")
+                ? UpAddButton(onTap: handleAddEquipe, text: "adicionar membros")
                 : Container(),
           ),
           Padding(
@@ -121,7 +121,7 @@ class ProjectPageHomeTab extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: isPersonal
-                ? UpAddButton(onTap: () {}, text: "adicionar Imagens")
+                ? UpAddButton(onTap: handleAddImage, text: "adicionar Imagens")
                 : Container(),
           ),
         ],

@@ -45,7 +45,7 @@ class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
                 widget.isPersonal
                     ? UpAddButton(
                         text: "Adicionar Projetos",
-                        onTap: () {},
+                        onTap: widget.handleAddProject,
                       )
                     : Container()
               ],
