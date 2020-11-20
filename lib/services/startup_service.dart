@@ -7,7 +7,7 @@ import 'package:projeto_up/models/startup.dart';
 class StartupService extends GetxService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const colName = "startups";
-  final RxBool loading = false.obs;
+  final RxBool _loading = false.obs;
   Map<String, List<Startup>> startups = Map<String, List<Startup>>();
   List<Startup> startupsList = List<Startup>();
   @override
@@ -16,9 +16,13 @@ class StartupService extends GetxService {
     super.onReady();
   }
 
+  bool get loading {
+    return _loading();
+  }
+
   void _setLoading(bool v) {
-    loading.value = v;
-    loading.refresh();
+    _loading.value = v;
+    _loading.refresh();
   }
 
   Future<void> _getCompanies() async {
@@ -51,5 +55,13 @@ class StartupService extends GetxService {
     Startup _tempStartup = Startup.fromDocument(snap);
     _setLoading(false);
     return _tempStartup;
+  }
+
+  Future<String> uploadStartup(Startup _startup) async {
+    _setLoading(true);
+    DocumentReference ref =
+        await _firestore.collection(colName).add(_startup.toJson());
+    _setLoading(false);
+    return ref.id;
   }
 }

@@ -6,7 +6,7 @@ import 'package:projeto_up/models/projeto.dart';
 class ProjectsService extends GetxService {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const colName = "projetos";
-  RxBool loading = false.obs;
+  RxBool _loading = false.obs;
   List<Projeto> projectsList = List<Projeto>();
 
   @override
@@ -15,9 +15,13 @@ class ProjectsService extends GetxService {
     super.onReady();
   }
 
+  bool get loading {
+    return _loading();
+  }
+
   void _setLoading(bool v) {
-    loading.value = v;
-    loading.refresh();
+    _loading.value = v;
+    _loading.refresh();
   }
 
   Future<void> _getProjects() async {
