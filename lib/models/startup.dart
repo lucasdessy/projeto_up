@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projeto_up/models/membro.dart';
+import 'package:projeto_up/utils/up_network_assets.dart';
 
 class Startup {
   String id;
@@ -38,32 +39,34 @@ class Startup {
   });
 
   factory Startup.fromDocument(DocumentSnapshot snapshot) {
-    try {
-      return Startup(
-        id: snapshot.id,
-        nome: snapshot.data()["nome"],
-        capaUrl: snapshot.data()["capa_url"] ?? "",
-        segmento: snapshot.data()["segmento"],
-        descricao: snapshot.data()["descricao"],
-        pitchUrl: snapshot.data()["pitch_url"] ?? "",
-        whatsapp: snapshot.data()["whatsapp"],
-        instagram: snapshot.data()["instagram"],
-        facebook: snapshot.data()["facebook"],
-        outrosContatos: (snapshot.data()["outros_contatos"] as List<dynamic>)
-            .map((e) => e.toString())
-            .toList(),
-        membros: (snapshot.data()["membros"] as List<dynamic>)
-            .map(
-              (membroSnap) => Membro.fromDocument(membroSnap),
-            )
-            .toList(),
-        album: (snapshot.data()["album"] as List<dynamic>)
-            .map((e) => e.toString())
-            .toList(),
-      );
-    } catch (e) {
-      return Startup();
-    }
+    return Startup(
+      id: snapshot.id,
+      nome: snapshot.data()["nome"],
+      capaUrl: snapshot.data()["capa_url"] ?? UpNetworkAssets.noImage,
+      segmento: snapshot.data()["segmento"],
+      descricao: snapshot.data()["descricao"],
+      pitchUrl: snapshot.data()["pitch_url"] ?? "",
+      whatsapp: snapshot.data()["whatsapp"],
+      instagram: snapshot.data()["instagram"],
+      facebook: snapshot.data()["facebook"],
+      outrosContatos: snapshot.data()["outros_contatos"] == null
+          ? null
+          : (snapshot.data()["outros_contatos"] as List<dynamic>)
+              .map((e) => e.toString())
+              .toList(),
+      membros: snapshot.data()["membros"] == null
+          ? null
+          : (snapshot.data()["membros"] as List<dynamic>)
+              .map(
+                (membroSnap) => Membro.fromDocument(membroSnap),
+              )
+              .toList(),
+      album: snapshot.data()["album"] == null
+          ? null
+          : (snapshot.data()["album"] as List<dynamic>)
+              .map((e) => e.toString())
+              .toList(),
+    );
   }
 
   Map<String, dynamic> toJson() => {
@@ -76,7 +79,7 @@ class Startup {
         "instagram": instagram,
         "facebook": facebook,
         "outros_contatos": outrosContatos,
-        "membros": membros.map(
+        "membros": membros?.map(
           (membro) => membro.toJson(),
         ),
         "album": album,
