@@ -23,6 +23,10 @@ class Startup {
   List<Membro> membros;
   List<String> album;
 
+  // Estatisticas
+  int visualizacoes;
+  int anoCriado;
+
   Startup({
     this.id,
     this.nome,
@@ -36,6 +40,8 @@ class Startup {
     this.outrosContatos,
     this.membros,
     this.album,
+    this.visualizacoes,
+    this.anoCriado,
   });
 
   factory Startup.fromDocument(DocumentSnapshot snapshot) {
@@ -66,6 +72,10 @@ class Startup {
           : (snapshot.data()["album"] as List<dynamic>)
               .map((e) => e.toString())
               .toList(),
+      visualizacoes:
+          int.tryParse((snapshot.data()["visualizacoes"] ?? 0).toString()),
+      anoCriado: int.tryParse(
+          (snapshot.data()["ano_criado"] ?? DateTime.now().year).toString()),
     );
   }
 
