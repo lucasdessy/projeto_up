@@ -1,4 +1,4 @@
-package app.projetoup.projeto_up
+package app.projetoup
 
 import io.flutter.embedding.android.FlutterActivity
 
