@@ -44,6 +44,25 @@ class Startup {
     this.anoCriado,
   });
 
+  Startup clone() {
+    return new Startup(
+      id: this.id,
+      nome: this.nome,
+      capaUrl: this.capaUrl,
+      segmento: this.segmento,
+      descricao: this.descricao,
+      pitchUrl: this.pitchUrl,
+      whatsapp: this.whatsapp,
+      instagram: this.instagram,
+      facebook: this.facebook,
+      outrosContatos: this.outrosContatos,
+      membros: this.membros,
+      album: this.album,
+      visualizacoes: this.visualizacoes,
+      anoCriado: this.anoCriado,
+    );
+  }
+
   factory Startup.fromDocument(DocumentSnapshot snapshot) {
     return Startup(
       id: snapshot.id,

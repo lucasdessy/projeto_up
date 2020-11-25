@@ -46,18 +46,23 @@ class ProjectPageMembroCard extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${membro.nomeMembro}",
-                style: UpText.ProjectPageTitleBold,
-              ),
-              Text(
-                "${membro.cargo}",
-                style: UpText.ProjectPageDesc,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${membro.nomeMembro}",
+                  style: UpText.ProjectPageTitleBold,
+                ),
+                Expanded(
+                  child: Text(
+                    "${membro.cargo}",
+                    style: UpText.ProjectPageDesc,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

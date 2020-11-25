@@ -5,8 +5,12 @@ import 'package:projeto_up/utils/up_text.dart';
 
 class UpEditAppBar extends StatelessWidget {
   final String text;
-  final void Function() onTap;
-  const UpEditAppBar({Key key, this.text, this.onTap}) : super(key: key);
+  final List<Widget> actions;
+  const UpEditAppBar({
+    Key key,
+    this.text,
+    this.actions,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +24,7 @@ class UpEditAppBar extends StatelessWidget {
       ),
       leading: UpBackButton(),
       pinned: true,
+      actions: actions,
     );
   }
 }

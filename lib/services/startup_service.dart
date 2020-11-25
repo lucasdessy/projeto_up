@@ -68,4 +68,18 @@ class StartupService extends GetxService {
     _setLoading(false);
     return ref.id;
   }
+
+  Future<void> saveStartup(Startup _startup) async {
+    _setLoading(true);
+    try {
+      await _firestore
+          .collection(colName)
+          .doc(_startup.id)
+          .update(_startup.toJson());
+    } catch (e) {
+      _setLoading(false);
+      throw ('Ocorreu um erro interno');
+    }
+    _setLoading(false);
+  }
 }

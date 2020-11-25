@@ -219,4 +219,16 @@ class UserService extends GetxService {
   bool get hasCompany {
     return _hasCompanyRegister();
   }
+
+  Future<void> saveStartup(Startup _startup) async {
+    _setLoading(true);
+    try {
+      await _startupService.saveStartup(_startup);
+      _startupPessoal.value = _startup;
+    } catch (e) {
+      _setLoading(false);
+      throw ('Ocorreu um erro interno');
+    }
+    _setLoading(false);
+  }
 }
