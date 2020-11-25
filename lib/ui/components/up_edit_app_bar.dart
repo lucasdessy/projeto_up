@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_up/ui/components/up_back_button.dart';
 import 'package:projeto_up/utils/up_colors.dart';
+import 'package:projeto_up/utils/up_text.dart';
 
 class UpEditAppBar extends StatelessWidget {
   final String text;
@@ -12,11 +14,11 @@ class UpEditAppBar extends StatelessWidget {
       expandedHeight: 60,
       toolbarHeight: 60,
       backgroundColor: UpColors.wireframe_white,
-      iconTheme: IconThemeData(color: UpColors.appbar_icons),
       title: Text(
         "$text",
-        style: TextStyle(color: Colors.black),
+        style: UpText.UpEditAppBarText,
       ),
+      leading: UpBackButton(),
       pinned: true,
     );
   }
