@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_up/models/projeto.dart';
+import 'package:projeto_up/ui/components/up_back_button.dart';
 import 'package:projeto_up/ui/pages/project_page/components/tabs/tabs_components/projeto_details_card.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_text.dart';
@@ -23,12 +24,7 @@ class ProjectPageProjetoDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                icon: Icon(Icons.chevron_left),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              UpBackButton(),
               Center(
                 child: ProjectPageProjetoDetailsCard(projeto: projeto),
               ),

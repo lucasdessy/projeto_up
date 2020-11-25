@@ -152,4 +152,9 @@ class UpText {
     fontWeight: FontWeight.w400,
     color: Color.fromARGB(255, 85, 85, 85),
   );
+  static const UpEditAppBarText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 85, 85, 85),
+  );
 }
