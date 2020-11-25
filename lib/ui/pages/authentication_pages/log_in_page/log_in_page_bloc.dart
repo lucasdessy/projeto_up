@@ -16,10 +16,22 @@ class LogInPageController extends GetxController {
   final TextEditingController passController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void handleFacebookSignIn() {}
+  void handleFacebookSignIn() async {
+    try {
+      if (await userService.signInWithFacebook())
+        Get.until((route) => route.isFirst);
+    } catch (e) {
+      Get.snackbar("Falha ao realizar login", e.toString());
+    }
+  }
 
-  void handleGoogleSignIn() {
-    userService.signInWithGoogle();
+  void handleGoogleSignIn() async {
+    try {
+      await userService.signInWithGoogle();
+      Get.until((route) => route.isFirst);
+    } catch (e) {
+      Get.snackbar("Falha ao realizar login", e.toString());
+    }
   }
 
   void handleForgotPassword() async {

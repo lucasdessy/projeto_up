@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:projeto_up/models/projeto.dart';
@@ -91,9 +92,30 @@ class UserService extends GetxService {
         idToken: googleAuth.idToken,
       );
       await FirebaseAuth.instance.signInWithCredential(credential);
+      loadUser();
+    } on FirebaseAuthException catch (e) {
+      throw (e.code);
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  Future<bool> signInWithFacebook() async {
+    final facebookLogin = FacebookLogin();
+    final result = await facebookLogin.logIn(['email']);
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        FacebookAuthCredential credential =
+            FacebookAuthProvider.credential(result.accessToken.token);
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        loadUser();
+        return true;
+      case FacebookLoginStatus.error:
+        throw ('Ocorreu um erro interno');
+      case FacebookLoginStatus.cancelledByUser:
+        return false;
+    }
+    return false;
   }
 
   Future<void> forgotPassword({@required String email}) async {
@@ -184,6 +206,9 @@ class UserService extends GetxService {
     await _firestore.collection(colName).doc(userId).set(_tempUsuario.toJson());
     usuario.value = _tempUsuario;
     _hasCompanyRegister.value = true;
+    _startupPessoal.value = await _startupService.getStartup(startupId);
+    _projetosPessoais = await _projectsService.getProjectsById(startupId);
+    _startupPessoal.refresh();
     _setLoading(false);
   }
 

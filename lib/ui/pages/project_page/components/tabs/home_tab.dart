@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:projeto_up/models/membro.dart';
 import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/ui/components/up_add_button.dart';
@@ -50,7 +51,7 @@ class ProjectPageHomeTab extends StatelessWidget {
                 isPersonal
                     ? UpAddButton(
                         onTap: handleAddDesc,
-                        text: startup?.descricao == null
+                        text: startup.descricao.isNullOrBlank
                             ? "adicionar descrição"
                             : "editar descrição",
                       )
