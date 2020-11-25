@@ -53,9 +53,9 @@ class _ProjectPagePortfolioTabState extends State<ProjectPagePortfolioTab> {
           )
         : ConstrainedBox(
             constraints: BoxConstraints.tightForFinite(
-              height: (MediaQuery.of(context).size.height - 262 - 60).isNegative
+              height: (MediaQuery.of(context).size.height - 262).isNegative
                   ? MediaQuery.of(context).size.height
-                  : (MediaQuery.of(context).size.height - 262 - 60),
+                  : (MediaQuery.of(context).size.height - 262),
             ),
             child: Navigator(
               observers: [_heroController],
