@@ -13,7 +13,7 @@ class ProjectPageController extends GetxController {
   Rx<Startup> startup = Startup().obs;
   bool isNotPersonal = Get.parameters["notPersonal"] == "true";
   String startupId = Get.parameters["startupId"];
-  List<Projeto> projects = List<Projeto>().obs;
+  RxList<Projeto> projects = List<Projeto>().obs;
 
   bool get canDisplay {
     return (userService.isLoggedIn && userService.hasCompany);
@@ -37,7 +37,7 @@ class ProjectPageController extends GetxController {
   void _loadCompany() async {
     if (isNotPersonal) {
       startup.value = await startupService.getStartup(startupId);
-      projects = await projectsService.getProjectsById(startupId);
+      projects.value = await projectsService.getProjectsById(startupId);
       return;
     } else {
       startup = userService.startupPessoalStream;
