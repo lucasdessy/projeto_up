@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:projeto_up/models/membro.dart';
 import 'package:projeto_up/models/projeto.dart';
 import 'package:projeto_up/models/startup.dart';
 import 'package:projeto_up/models/usuario.dart';
@@ -27,7 +28,7 @@ class UserService extends GetxService {
   final StartupService _startupService = Get.find();
   final ProjectsService _projectsService = Get.find();
   final Rx<Startup> _startupPessoal = Startup().obs;
-  List<Projeto> _projetosPessoais = List<Projeto>().obs;
+  RxList<Projeto> projetosPessoais = RxList<Projeto>();
 
   User fireBaseUser;
 
@@ -42,8 +43,6 @@ class UserService extends GetxService {
   Startup get startupPessoal => _startupPessoal();
 
   Rx<Startup> get startupPessoalStream => _startupPessoal;
-
-  List<Projeto> get projetosPessoais => _projetosPessoais;
 
   void _setLoading(bool v) {
     _loading.value = v;
@@ -162,6 +161,7 @@ class UserService extends GetxService {
 
   @override
   void onInit() {
+    projetosPessoais.length;
     super.onInit();
   }
 
@@ -187,8 +187,12 @@ class UserService extends GetxService {
         Usuario _tempUsuario = Usuario.fromDocument(snap);
         usuario.value = _tempUsuario;
         _startupPessoal.value = await _startupService.getStartup(startupId);
-        _projetosPessoais = await _projectsService.getProjectsById(startupId);
+        projetosPessoais.value =
+            await _projectsService.getProjectsById(startupId);
+        print("LOADUSERSERESERUSERUSESUERUES");
+        print(projetosPessoais);
         _startupPessoal.refresh();
+        projetosPessoais.refresh();
       } else {
         _triggerCreateStartup();
       }
@@ -207,7 +211,7 @@ class UserService extends GetxService {
     usuario.value = _tempUsuario;
     _hasCompanyRegister.value = true;
     _startupPessoal.value = await _startupService.getStartup(startupId);
-    _projetosPessoais = await _projectsService.getProjectsById(startupId);
+    projetosPessoais.value = await _projectsService.getProjectsById(startupId);
     _startupPessoal.refresh();
     _setLoading(false);
   }
@@ -225,6 +229,24 @@ class UserService extends GetxService {
     try {
       await _startupService.saveStartup(_startup);
       _startupPessoal.value = _startup;
+    } catch (e) {
+      _setLoading(false);
+      throw ('Ocorreu um erro interno');
+    }
+    _setLoading(false);
+  }
+
+  Future<void> saveMembro(Membro membro) async {
+    _startupPessoal.value.membros?.add(membro);
+    await saveStartup(_startupPessoal());
+  }
+
+  Future<void> saveProjeto(Projeto projeto) async {
+    _setLoading(true);
+    try {
+      projeto.idStartup = startupId;
+      await _projectsService.saveProject(projeto);
+      projetosPessoais.add(projeto);
     } catch (e) {
       _setLoading(false);
       throw ('Ocorreu um erro interno');

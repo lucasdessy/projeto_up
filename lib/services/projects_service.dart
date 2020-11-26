@@ -49,4 +49,10 @@ class ProjectsService extends GetxService {
     _setLoading(false);
     return _projectsTemp;
   }
+
+  Future<void> saveProject(Projeto projeto) async {
+    _setLoading(true);
+    await _firestore.collection(colName).add(projeto.toJson());
+    _setLoading(false);
+  }
 }

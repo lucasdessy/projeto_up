@@ -72,11 +72,13 @@ class StartupService extends GetxService {
   Future<void> saveStartup(Startup _startup) async {
     _setLoading(true);
     try {
+      print(_startup.toJson());
       await _firestore
           .collection(colName)
           .doc(_startup.id)
           .update(_startup.toJson());
     } catch (e) {
+      print(e);
       _setLoading(false);
       throw ('Ocorreu um erro interno');
     }
