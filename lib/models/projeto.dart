@@ -6,7 +6,6 @@ class Projeto {
   String nomeProjeto;
   String descricao;
   String capaUrl;
-  int likes;
 
   // Estatisticas
   int visualizacoes;
@@ -18,7 +17,6 @@ class Projeto {
     this.nomeProjeto,
     this.descricao,
     this.capaUrl,
-    this.likes,
     this.visualizacoes,
     this.anoCriado,
   });
@@ -30,7 +28,6 @@ class Projeto {
       nomeProjeto: snapshot.data()["nome_projeto"],
       descricao: snapshot.data()["descricao"],
       capaUrl: snapshot.data()["capa_url"],
-      likes: int.tryParse(snapshot.data()["likes"].toString()) ?? 0,
       visualizacoes:
           int.tryParse((snapshot.data()["visualizacoes"] ?? 0).toString()),
       anoCriado: int.tryParse(
@@ -43,5 +40,7 @@ class Projeto {
         "nome_projeto": nomeProjeto,
         "descricao": descricao,
         "capa_url": capaUrl,
+        "visualizacoes": visualizacoes,
+        "ano_criado": anoCriado,
       };
 }

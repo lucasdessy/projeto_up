@@ -75,19 +75,19 @@ class Startup {
       instagram: snapshot.data()["instagram"],
       facebook: snapshot.data()["facebook"],
       outrosContatos: snapshot.data()["outros_contatos"] == null
-          ? null
+          ? List<String>()
           : (snapshot.data()["outros_contatos"] as List<dynamic>)
               .map((e) => e.toString())
               .toList(),
       membros: snapshot.data()["membros"] == null
-          ? null
+          ? List<Membro>()
           : (snapshot.data()["membros"] as List<dynamic>)
               .map(
                 (membroSnap) => Membro.fromDocument(membroSnap),
               )
               .toList(),
       album: snapshot.data()["album"] == null
-          ? null
+          ? List<String>()
           : (snapshot.data()["album"] as List<dynamic>)
               .map((e) => e.toString())
               .toList(),
@@ -108,9 +108,11 @@ class Startup {
         "instagram": instagram,
         "facebook": facebook,
         "outros_contatos": outrosContatos,
-        "membros": membros?.map(
-          (membro) => membro.toJson(),
-        ),
+        "membros": membros
+            .map(
+              (membro) => membro.toJson(),
+            )
+            .toList(),
         "album": album,
       };
 }
