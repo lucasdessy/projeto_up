@@ -97,6 +97,10 @@ class AppService extends GetxService {
           ExactAssetPicture(
               SvgPicture.svgStringDecoder, 'assets/svg/back-arrow.svg'),
           null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/upload.svg'),
+          null),
       precacheImage(AssetImage('assets/png/foguete.png'), Get.context),
       precacheImage(AssetImage('assets/png/stars.png'), Get.context),
       precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context),
