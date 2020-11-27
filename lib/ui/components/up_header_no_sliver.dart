@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:projeto_up/ui/components/up_button.dart';
+import 'package:projeto_up/ui/components/up_back_button.dart';
 import 'package:projeto_up/utils/up_colors.dart';
 
 class UpHeaderNoSliver extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> actions;
-
-  const UpHeaderNoSliver({Key key, this.actions}) : super(key: key);
+  final bool automaticallyImplyLeading;
+  const UpHeaderNoSliver(
+      {Key key, this.actions, this.automaticallyImplyLeading = true})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final ModalRoute<dynamic> parentRoute = ModalRoute.of(context);
@@ -24,7 +26,11 @@ class UpHeaderNoSliver extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: actions,
       automaticallyImplyLeading: false,
-      leading: canPop ? UpButton() : null,
+      leading: automaticallyImplyLeading
+          ? canPop
+              ? UpBackButton()
+              : null
+          : null,
     );
   }
 

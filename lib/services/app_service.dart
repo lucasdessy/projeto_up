@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projeto_up/services/projects_service.dart';
@@ -20,10 +21,10 @@ import 'package:projeto_up/utils/up_colors.dart';
 import 'package:projeto_up/utils/up_config.dart';
 
 class AppService extends GetxService {
-  // TODO show onboarding
-
+  static const _boxFieldName = "hasOpenedOnBoarding";
   final FirebaseStorage _storage = FirebaseStorage.instance;
   final RxBool _isImageLoading = false.obs;
+  final _box = GetStorage();
 
   @override
   void onInit() {
@@ -101,6 +102,10 @@ class AppService extends GetxService {
           ExactAssetPicture(
               SvgPicture.svgStringDecoder, 'assets/svg/upload.svg'),
           null),
+      precachePicture(
+          ExactAssetPicture(
+              SvgPicture.svgStringDecoder, 'assets/svg/arrow-right.svg'),
+          null),
       precacheImage(AssetImage('assets/png/foguete.png'), Get.context),
       precacheImage(AssetImage('assets/png/stars.png'), Get.context),
       precacheImage(AssetImage('assets/png/whatsapp.png'), Get.context),
@@ -110,6 +115,7 @@ class AppService extends GetxService {
       precacheImage(AssetImage('assets/png/camera.png'), Get.context),
       precacheImage(AssetImage('assets/png/portfolio.png'), Get.context),
       precacheImage(AssetImage('assets/png/contato.png'), Get.context),
+      precacheImage(AssetImage('assets/png/onboarding.png'), Get.context),
     ]);
     Get.offAllNamed(RouterService.SPLASH);
 
@@ -120,7 +126,21 @@ class AppService extends GetxService {
     final UserService us = Get.find();
     us.loadUser(); // Dispara o trigger daqui pois direto da stream do auth, dispara
     // prematuro, e daqui não acontece isso
+    _loadOnBoarding();
     super.onReady();
+  }
+
+  void _loadOnBoarding() {
+    final bool hasOpened = (_box.read(_boxFieldName) == null)
+        ? false
+        : (_box.read(_boxFieldName) == "true");
+    if (!hasOpened) {
+      Get.toNamed(RouterService.ONBOARDING);
+    }
+  }
+
+  void finishOnBoarding() {
+    _box.write(_boxFieldName, "true");
   }
 
   void _setImageLoading(bool v) {

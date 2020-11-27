@@ -157,4 +157,14 @@ class UpText {
     fontWeight: FontWeight.w600,
     color: Color.fromARGB(255, 85, 85, 85),
   );
+  static const OnBoardingText = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: Color.fromARGB(255, 73, 75, 91),
+  );
+  static const OnBoardingNextText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Color.fromARGB(255, 131, 131, 131),
+  );
 }

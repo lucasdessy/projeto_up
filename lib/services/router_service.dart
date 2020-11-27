@@ -21,6 +21,8 @@ import 'package:projeto_up/ui/pages/edit_pages/startup_edit_page/startup_edit_pa
 import 'package:projeto_up/ui/pages/home_page/home_page_bloc.dart';
 import 'package:projeto_up/ui/pages/home_page/home_page_view.dart';
 import 'package:projeto_up/ui/pages/home_tab/home_tab_view.dart';
+import 'package:projeto_up/ui/pages/onboarding_page/onboarding_page_bloc.dart';
+import 'package:projeto_up/ui/pages/onboarding_page/onboarding_page_view.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_my_profile.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_tab1.dart';
 import 'package:projeto_up/ui/pages/project_page/project_page_tab2.dart';
@@ -42,6 +44,7 @@ class RouterService {
   static const String SIGN_UP = '/sign-up';
   static const String WELCOME = '/welcome';
   static const String ADD_PHOTO = '/welcome/add-photo';
+  static const String ONBOARDING = '/onboarding';
 
   // Edit pages
   static const String EDIT_CONTATOS = '/contatos-edit';
@@ -95,6 +98,14 @@ class RouterService {
       name: ADD_PHOTO,
       page: () => AddPhotoPageView(),
       binding: AddPhotoPageBindings(),
+    ),
+    GetPage(
+      name: ONBOARDING,
+      page: () => OnboardingPageView(),
+      binding: OnboardingPageBindings(),
+      transition: Transition.downToUp,
+      curve: Curves.easeOut,
+      transitionDuration: Duration(milliseconds: 650),
     ),
     GetPage(
       name: EDIT_CONTATOS,
