@@ -59,7 +59,7 @@ class ProjetoEditPageView extends GetView<ProjetoEditPageController> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color.fromARGB(255, 233, 233, 233),
+                              color: Color.fromARGB(255, 247, 247, 247),
                             ),
                             child: Obx(
                               () => ClipRRect(
