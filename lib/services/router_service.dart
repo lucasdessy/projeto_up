@@ -12,6 +12,8 @@ import 'package:projeto_up/ui/pages/edit_pages/contatos_edit_page/contatos_edit_
 import 'package:projeto_up/ui/pages/edit_pages/contatos_edit_page/contatos_edit_page_view.dart';
 import 'package:projeto_up/ui/pages/edit_pages/equipe_edit_page/equipe_edit_page_bloc.dart';
 import 'package:projeto_up/ui/pages/edit_pages/equipe_edit_page/equipe_edit_page_view.dart';
+import 'package:projeto_up/ui/pages/edit_pages/images_edit_page/images_edit_page_bloc.dart';
+import 'package:projeto_up/ui/pages/edit_pages/images_edit_page/images_edit_page_view.dart';
 import 'package:projeto_up/ui/pages/edit_pages/projeto_edit_page/projeto_edit_page_bloc.dart';
 import 'package:projeto_up/ui/pages/edit_pages/projeto_edit_page/projeto_edit_page_view.dart';
 import 'package:projeto_up/ui/pages/edit_pages/startup_edit_page/startup_edit_page_bloc.dart';
@@ -46,6 +48,7 @@ class RouterService {
   static const String EDIT_EQUIPE = '/equipe-edit';
   static const String EDIT_PROJETO = '/projetos-edit';
   static const String EDIT_STARTUP = '/startup-edit';
+  static const String EDIT_IMAGES = '/images-edit';
 
   final List<GetPage> pages = [
     GetPage(
@@ -112,6 +115,11 @@ class RouterService {
       name: EDIT_STARTUP,
       page: () => StartupEditPageView(),
       binding: StartupEditPageBindings(),
+    ),
+    GetPage(
+      name: EDIT_IMAGES,
+      page: () => ImagesEditPageView(),
+      binding: ImagesEditPageBindings(),
     ),
   ];
 
