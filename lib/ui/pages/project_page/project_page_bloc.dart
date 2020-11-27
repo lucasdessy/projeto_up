@@ -58,7 +58,7 @@ class ProjectPageController extends GetxController {
 
   void handleAddImage() async {
     print("handleAddImage called");
-    // Não sei ainda
+    Get.toNamed(RouterService.EDIT_IMAGES);
   }
 
   void handleAddEquipe() async {

@@ -44,11 +44,16 @@ class SearchTabController extends GetxController {
     List<dynamic> _tempList = List<dynamic>();
     if (searchController.text.isNullOrBlank) {
       _tempList = [
+        ...projectsService.projectsList,
         ...startupService.startupsList,
-        ...projectsService.projectsList
       ];
     } else {
       _tempList = [
+        ...projectsService.projectsList
+            .where((projeto) =>
+                removeDiacritics(projeto.nomeProjeto.toUpperCase())
+                    .contains(searchController.text.toUpperCase()))
+            .toList(),
         ...startupService.startupsList
             .where((startup) =>
                 removeDiacritics(startup.segmento.toUpperCase()).contains(
@@ -56,11 +61,8 @@ class SearchTabController extends GetxController {
                 removeDiacritics(startup.nome.toUpperCase()).contains(
                     removeDiacritics(searchController.text.toUpperCase())))
             .toList(),
-        ...projectsService.projectsList.where(
-            (projeto) => projeto.nomeProjeto.contains(searchController.text))
       ];
     }
-    _tempList.shuffle(); //TODO make something better to do with this
     return _tempList;
   }
 
