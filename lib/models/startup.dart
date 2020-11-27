@@ -109,10 +109,10 @@ class Startup {
         "facebook": facebook,
         "outros_contatos": outrosContatos,
         "membros": membros
-            .map(
+            ?.map(
               (membro) => membro.toJson(),
             )
-            .toList(),
+            ?.toList(),
         "album": album,
       };
 }
