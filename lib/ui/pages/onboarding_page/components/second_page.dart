@@ -22,7 +22,7 @@ class OnboardingPageSecondPage extends StatelessWidget {
             height: 40,
           ),
           Text(
-            "Encontre as startups e os projetos mais tops do momento.",
+            "Entre em contato com a equipe para parcerias ou interesse em investir.",
             style: UpText.OnBoardingText,
             textAlign: TextAlign.center,
           ),
