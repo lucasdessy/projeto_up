@@ -27,7 +27,7 @@ class HomeTabView extends GetView<HomeTabController> {
                 width: 248,
                 height: 60,
                 text: "Olá,"
-                    "\nseja bem-vinda ao up!",
+                    "\nseja bem-vindo ao up!",
               ),
             ),
           ),
